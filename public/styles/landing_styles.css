@@ -1,0 +1,81 @@
+body {
+    margin: 0
+}
+
+.header {
+    z-index: 2;
+    left: 0;
+    right: 0;
+    height: 100px;
+    width: 100%;
+    /* background-color: rgb(116, 114, 127); */
+}
+
+.agency-logo {
+    height: 100%;
+    text-align: center;
+    margin-left: 25px;
+    margin-top: 25px;
+    float: left;
+}
+
+.logo-text {
+    color: rgb(0, 0, 0);
+    display: block;
+    font-family: "Helvetica Neue";
+    font-weight: bold;
+}
+
+.hogwarts-nav {
+    float: right;
+    height: 100%;
+}
+
+.hogwarts-nav a {
+    color: rgb(0, 0, 0);
+    font-size: 25px;
+    font-weight: 700;
+    font-family: 'Montserrat', sans-serif;
+    padding: 8% 20px 0 0;
+    display: inline-block;
+}
+
+.site-content {
+    position: absolute;
+
+    width: 100%;
+}
+
+.image-content {
+    background-image: url("https://www.historic-uk.com/wp-content/uploads/2017/01/harry-potter-platform-nine-three-quarters.jpg");
+    height: 800px;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    
+}
+
+.quote {
+    text-align: center;
+    color: rgb(0, 0, 0);
+    padding-top: 30px;
+    margin: 0;
+    font-family: 'Dancing Script', cursive;
+    font-size: 70px;
+}
+
+.content-heading {
+    color: black;
+    text-align: center;
+    font-family: 'Martian Mono', monospace;
+}
+
+.first {
+    display: inline-block;
+    margin-left: 50px;
+    height: 200px;
+    width: 200px;
+    text-align: center;
+    font-size: 25px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+}
