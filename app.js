@@ -21,12 +21,12 @@ app.use(express.static("public"));
 app.use(bodyPraser.urlencoded({extended:true}))
 
 app.get("/",function(req,res){
-    res.sendFile("C:/Users/gujar/Desktop/WMC/sign_up_index.html")
+    res.sendFile("C:/Users/gujar/Desktop/WMC/login_index.html")
 });
 
 app.post("/",function(req,res)
 {
-    control = new Control({
+    /*control = new Control({
         fName: "Neel",
         lName: "Sheth",
         email: req.body.email,
@@ -37,7 +37,7 @@ app.post("/",function(req,res)
         console.log(doc._id.toString());
     }).catch(function (error) {
         console.log(error);
-    });
+    });*/
     
 });
 
