@@ -51,7 +51,9 @@ body {
     height: 800px;
     background-repeat: no-repeat;
     background-size: 100% 100%;
-    
+    -webkit-box-shadow: 50px 50px 50px 50px rgba(181, 162, 106, 0.75);
+    -moz-box-shadow: 50px 50px 50px 50px rgba(181, 162, 106, 0.75);
+    box-shadow: 50px 50px 50px 50px rgba(181, 162, 106, 0.75);
 }
 
 .quote {
@@ -63,19 +65,85 @@ body {
     font-size: 70px;
 }
 
+.content {
+    margin-top: 125px;
+    height: 800px;
+    background-image: linear-gradient( rgb(255, 255, 255), rgb(181, 162, 106));
+}
+
 .content-heading {
-    color: black;
+    font-size: 100px;
+    margin-top: 0px;
+    padding-bottom: 13px;
+    height: 20px;
+    color: rgb(84, 83, 78);
     text-align: center;
-    font-family: 'Martian Mono', monospace;
+    font-family: 'Great Vibes', cursive;
+}
+
+hr.new1 {
+    width: 85%;
+    border: 5px solid rgb(0, 0, 0);
+    border-radius: 5px;
+    margin-bottom: 50px;
+}
+
+.second-container {
+    display: flex;
+    justify-content: space-between;
 }
 
 .first {
     display: inline-block;
-    margin-left: 50px;
-    height: 200px;
-    width: 200px;
+    height: 400px;
+    width: 500px;
+    padding-top: 50px;
     text-align: center;
     font-size: 25px;
     font-family: 'Montserrat', sans-serif;
     font-weight: bold;
+}
+
+.img-text {
+    display: block;
+}
+
+.footer{
+    height: 400px;
+    margin-top: 2px;
+    background-color: #818080;
+}
+
+.footer1{
+    margin-left: 400px;
+    height: 300px;
+    width: 400px;
+    color: white;
+    font-size: 30px;
+    font-family: 'Raleway', sans-serif;
+}
+
+.contact{
+    display: inline;
+    margin-left: 400px;
+    height: 300px;
+    width: 400px;
+    color: white;
+}
+
+.contact-details{
+    color: white;
+    height: 100px;
+    width: 700px;
+    font-size: 25px;
+    font-family: 'Montserrat', sans-serif;
+}
+.credits{
+    margin-bottom: 0px;
+    padding-top: 60px;
+    color: white;
+    font-size: 35px;
+    height: 38px;
+    width: 400.340px;
+    margin-left: 877px;
 }
