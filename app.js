@@ -36,53 +36,68 @@ app.get("/",function(req,res){
 });
 
 
-app.post("/",function(req,res)
+app.post("/",async function(req,res)
 {
-    /*user = new User({
-        fName: req.body.fname,
-        lName: req.body.lname,
-        email: req.body.email,
-        password: req.body.password,
-        phone_number: req.body.phone_number
-    })
-    user.save().then(function (doc) {
-        console.log(doc._id.toString());
-    }).catch(function (error) {
-        console.log(error);
-    });*/
-    
-});
+    if(req.body.fname!='' && req.body.lname!='' && req.body.email!='' && req.body.password!='' && req.body.phone_number!='')
+    {
+        const x=await Control.find({email:req.body.email});
+        const y=await Control.find({password:req.body.password});
 
-app.get("/login_page",async function(req,res){
-    res.sendFile("C:/Users/gujar/Desktop/WMC/login_index.html");
-    /*const x=await Control.find();
-    console.log(x);*/
-});
-
-app.post("/login_page",function(req,res)
-{
-    /*control = new Control({
-        fName: "Neel",
-        lName: "Sheth",
-        email: req.body.email,
-        password: req.body.password,
-        phone_number: 9426941917
-    })
-    control.save().then(function (doc) {
-        console.log(doc._id.toString());
-    }).catch(function (error) {
-        console.log(error);
-    });*/
-
-    /*Control.find(function(err,control){
-        if(err){
-            console.log(err);
+        if(x[0]!=undefined && y[0]!=undefined)
+        {
+            user = new User({
+                fName: req.body.fname,
+                lName: req.body.lname,
+                email: req.body.email,
+                password: req.body.password,
+                phone_number: req.body.phone_number
+            })
+            user.save().then(function (doc) {
+                console.log(doc._id.toString());
+            }).catch(function (error) {
+                console.log(error);
+            });
         }
         else
         {
-            console.log(control);
+            console.log("User aldready exists");
         }
-    });*/
+    }
+    else
+    {
+        console.log("Please enter value for all the fields");
+    }
+});
+
+app.get("/login_page", function(req,res){
+    res.sendFile("C:/Users/gujar/Desktop/WMC/login_index.html");
+});
+
+app.post("/login_page",async function(req,res)
+{
+
+    var form_email=req.body.email;
+    var form_password=req.body.password;
+
+    const x=await Control.find({email:form_email});
+    console.log();
+
+    if(x[0]===undefined)
+    {
+        console.log("Please enter a valid email");
+    }
+    else
+    {
+        var y=x[0].password;
+        if(form_password===y)
+        {
+            console.log("Succesfully logged in");
+        }
+        else
+        {
+            console.log("Please enter a valid password");
+        }
+    }
 });
 
 
