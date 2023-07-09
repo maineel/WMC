@@ -139,11 +139,11 @@ hr.new1 {
     font-family: 'Montserrat', sans-serif;
 }
 .credits{
+    text-align: center;
     margin-bottom: 0px;
-    padding-top: 60px;
+    padding-top: 65px;
     color: white;
-    font-size: 35px;
-    height: 38px;
-    width: 400.340px;
-    margin-left: 877px;
+    font-size: 20px;
+    height: 25px;
+    width: 100%;
 }
