@@ -47,13 +47,13 @@ body {
 }
 
 .image-content {
-    background-image: url("https://www.historic-uk.com/wp-content/uploads/2017/01/harry-potter-platform-nine-three-quarters.jpg");
-    height: 800px;
+    background-image: url("C:/Users/gujar/Desktop/WMC/public/images/Hogwarts_poster.png");
+    height: 1000px;
+    width:1550px;
     background-repeat: no-repeat;
-    background-size: 100% 100%;
-    -webkit-box-shadow: 50px 50px 50px 50px rgba(181, 162, 106, 0.75);
-    -moz-box-shadow: 50px 50px 50px 50px rgba(181, 162, 106, 0.75);
-    box-shadow: 50px 50px 50px 50px rgba(181, 162, 106, 0.75);
+    background-size: cover;
+    margin:0;
+    border:0;
 }
 
 .quote {
