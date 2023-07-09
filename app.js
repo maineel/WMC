@@ -30,15 +30,15 @@ const User=mongoose.model("User",userSchema);
 
 
 
-app.use(express.static(__dirname+"/public"));
+app.use(express.static(__dirname));
 app.use(bodyPraser.urlencoded({extended:true}));
 
-app.get("/",function(req,res){
+app.get("/sign_up_page",function(req,res){
     res.sendFile("C:/Users/gujar/Desktop/WMC/sign_up_index.html");
 });
 
 
-app.post("/",async function(req,res)
+app.post("/sign_up_page",async function(req,res)
 {
     if(req.body.fname!='' && req.body.lname!='' && req.body.email!='' && req.body.password!='' && req.body.phone_number!='')
     {
@@ -100,6 +100,10 @@ app.post("/login_page",async function(req,res)
             console.log("Please enter a valid password");
         }
     }
+});
+
+app.get("/",function(req,res){
+    res.sendFile("C:/Users/gujar/Desktop/WMC/landing_index.html");
 });
 
 
