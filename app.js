@@ -2,6 +2,8 @@ const express =require("express");
 const bodyPraser =require("body-parser");
 const request=require("request");
 const app=express();
+
+app.set("view engine","ejs");
 const mongoose=require("mongoose");
 
 mongoose.connect("mongodb://127.0.0.1/WMC",{useNewUrlParser:true});
