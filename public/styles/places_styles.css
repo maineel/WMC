@@ -1,91 +1,96 @@
-.body {
-    background-image: url(../images/frame.jpg);
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-size: cover;
-    background-position: center;
-}
+@media (min-width: 768px) {
+    .body {
 
-.navbar {
-    height: 100px;
-    width: 100%;
-    margin-bottom: 50px;
-}
+        background-image: url(../images/frame.jpg);
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: cover;
+    }
+    .d-flex{
+        margin-top: 10px;
+    }
+    .navbar {
+        height: 100px;
+        width: 100%;
+        margin-bottom: 50px;
+    }
 
-.places-card {
-    position: relative;
-    padding: 10px;
-    height: 320px;
-    margin: auto;
-    margin-bottom: 30px;
-    width: 50%;
-    border: 1px solid rgb(159, 148, 29);
-}
+    .places-card {
+        position: relative;
+        padding: 10px;
+        height: 320px;
+        margin: auto;
+        margin-bottom: 30px;
+        width: 50%;
+        border: 1px solid rgb(159, 148, 29);
+    }
 
-.places-img1 {
-    margin-right: 20px;
-    float: left;
-}
+    .places-img1 {
+        margin-right: 20px;
+        float: left;
+    }
 
-.card-body {
-    color: white;
-    font-size: 18px;
-}
+    .card-body {
+        color: white;
+        font-size: 18px;
+    }
 
-.card-title1 {
-    font-family: 'Space Grotesk', sans-serif;
-    font-size: 25px;
-    text-align: left;
-    margin-bottom: 10px;
-}
+    .card-title1 {
+        font-family: 'Space Grotesk', sans-serif;
+        font-size: 25px;
+        text-align: left;
+        margin-bottom: 10px;
+    }
 
-.places-img2 {
-    margin-left: 20px;
-    float: right;
-}
+    .places-img2 {
+        margin-left: 20px;
+        float: right;
+    }
 
-.card-title2 {
-    font-family: 'Space Grotesk', sans-serif;
-    font-size: 25px;
-    text-align: left;
-    margin-bottom: 10px;
-}
+    .card-title2 {
+        font-family: 'Space Grotesk', sans-serif;
+        font-size: 25px;
+        text-align: left;
+        margin-bottom: 10px;
+    }
 
-.footer{
-    height: 400px;
-    margin-top: 2px;
-}
+    .footer {
+        height: 400px;
+        margin-top: 2px;
+    }
 
-.footer1{
-    margin-left: 430px;
-    height: 300px;
-    width: 400px;
-    color: white;
-    font-size: 30px;
-    font-family: 'Raleway', sans-serif;
-}
+    .footer1 {
+        margin-left: 430px;
+        height: 300px;
+        width: 400px;
+        color: white;
+        font-size: 30px;
+        font-family: 'Raleway', sans-serif;
+    }
 
-.contact{
-    display: inline;
-    margin-left: 400px;
-    height: 300px;
-    width: 400px;
-    color: white;
-}
+    .contact {
+        display: inline;
+        margin-left: 400px;
+        height: 300px;
+        width: 400px;
+        color: white;
+    }
 
-.contact-details{
-    color: white;
-    height: 100px;
-    width: 700px;
-    font-size: 25px;
-    font-family: 'Montserrat', sans-serif;
-}
-.credits{
-    text-align: center;
-    margin-bottom: 0px;
-    padding-top: 65px;
-    color: white;
-    font-size: 20px;
-    height: 25px;
-    width: 100%;
+    .contact-details {
+        color: white;
+        height: 100px;
+        width: 700px;
+        font-size: 25px;
+        font-family: 'Montserrat', sans-serif;
+    }
+
+    .credits {
+        text-align: center;
+        margin-bottom: 0px;
+        padding-top: 65px;
+        color: white;
+        font-size: 20px;
+        height: 25px;
+        width: 100%;
+    }
 }

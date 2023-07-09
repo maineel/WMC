@@ -47,9 +47,8 @@ body {
 }
 
 .image-content {
-    background-image: url("C:/Users/gujar/Desktop/WMC/public/images/Hogwarts_poster.png");
-    height: 1000px;
-    width:1550px;
+    background-image: url("../images/landing.jpg");
+    height: 950px;
     background-repeat: no-repeat;
     background-size: cover;
     margin:0;
@@ -66,7 +65,7 @@ body {
 }
 
 .content {
-    margin-top: 125px;
+    margin-top: 5px;
     height: 800px;
     background-image: linear-gradient( rgb(255, 255, 255), rgb(181, 162, 106));
 }
