@@ -1,149 +1,79 @@
-body {
-    margin: 0
-}
+.form-control-dark {
+    border-color: var(--bs-gray);
+  }
+  .form-control-dark:focus {
+    border-color: #fff;
+    box-shadow: 0 0 0 .25rem rgba(255, 255, 255, .25);
+  }
+  
+  .text-small {
+    font-size: 85%;
+  }
+  
+  .dropdown-toggle:not(:focus) {
+    outline: 0;
+  }
 
-.header {
-    z-index: 2;
-    left: 0;
-    right: 0;
-    height: 100px;
+  .table-content{
+    justify-content: center;
+  }
+
+  .sticky{
+    position: fixed;
+    top: 0;
     width: 100%;
-    /* background-color: rgb(116, 114, 127); */
-}
+  }
 
-.agency-logo {
-    height: 100%;
-    text-align: center;
-    margin-left: 25px;
-    margin-top: 25px;
-    float: left;
-}
-
-.logo-text {
-    color: rgb(0, 0, 0);
-    display: block;
-    font-family: "Helvetica Neue";
-    font-weight: bold;
-}
-
-.hogwarts-nav {
-    float: right;
-    height: 100%;
-}
-
-.hogwarts-nav a {
-    color: rgb(0, 0, 0);
-    font-size: 25px;
-    font-weight: 700;
-    font-family: 'Montserrat', sans-serif;
-    padding: 8% 20px 0 0;
-    display: inline-block;
-}
-
-.site-content {
-    position: absolute;
-
-    width: 100%;
-}
-
-.image-content {
-    background-image: url("C:/Users/gujar/Desktop/WMC/public/images/Hogwarts_poster.png");
-    height: 1000px;
-    width:1550px;
-    background-repeat: no-repeat;
-    background-size: cover;
-    margin:0;
-    border:0;
-}
-
-.quote {
-    text-align: center;
-    color: rgb(0, 0, 0);
-    padding-top: 30px;
-    margin: 0;
-    font-family: 'Dancing Script', cursive;
-    font-size: 70px;
-}
-
-.content {
-    margin-top: 125px;
-    height: 800px;
-    background-image: linear-gradient( rgb(255, 255, 255), rgb(181, 162, 106));
+.xyz{
+  background-color: black;
 }
 
 .content-heading {
-    font-size: 100px;
-    margin-top: 0px;
-    padding-bottom: 13px;
-    height: 20px;
-    color: rgb(84, 83, 78);
-    text-align: center;
-    font-family: 'Great Vibes', cursive;
-}
-
-hr.new1 {
-    width: 85%;
-    border: 5px solid rgb(0, 0, 0);
-    border-radius: 5px;
-    margin-bottom: 50px;
-}
-
-.second-container {
-    display: flex;
-    justify-content: space-between;
-}
-
-.first {
-    display: inline-block;
-    height: 400px;
-    width: 500px;
-    padding-top: 50px;
-    text-align: center;
-    font-size: 25px;
-    font-family: 'Montserrat', sans-serif;
-    font-weight: bold;
-}
-
-.img-text {
-    display: block;
+  font-size: 50px;
+  margin-top: 0px;
+  padding-bottom: 13px;
+  height: 20px;
+  color: rgb(130, 128, 121);
+  text-align: center;
+  font-family: 'Great Vibes', cursive;
 }
 
 .footer{
-    height: 400px;
-    margin-top: 2px;
-    background-color: #818080;
+  height: 400px;
+  margin-top: 2px;
+  background-color: #818080;
 }
 
 .footer1{
-    margin-left: 400px;
-    height: 300px;
-    width: 400px;
-    color: white;
-    font-size: 30px;
-    font-family: 'Raleway', sans-serif;
+  margin-left: 400px;
+  height: 300px;
+  width: 400px;
+  color: white;
+  font-size: 30px;
+  font-family: 'Raleway', sans-serif;
 }
 
 .contact{
-    display: inline;
-    margin-left: 400px;
-    height: 300px;
-    width: 400px;
-    color: white;
+  display: inline;
+  margin-left: 400px;
+  height: 300px;
+  width: 400px;
+  color: rgb(0, 0, 0);
 }
 
 .contact-details{
-    color: white;
-    height: 100px;
-    width: 700px;
-    font-size: 25px;
-    font-family: 'Montserrat', sans-serif;
+  color: rgb(0, 0, 0);
+  height: 100px;
+  width: 700px;
+  font-size: 25px;
+  font-family: 'Montserrat', sans-serif;
 }
 .credits{
-    margin-bottom: 0px;
-    padding-top: 60px;
-    color: white;
-    font-size: 35px;
-    height: 38px;
-    width: 400.340px;
-    margin-left: 877px;
+  margin-bottom: 0px;
+  padding-top: 60px;
+  color: black;
+  font-size: 35px;
+  height: 38px;
+  width: 400.340px;
+  margin-left: 877px;
 }

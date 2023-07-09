@@ -1,11 +1,30 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Landing</title>
-    <link href="public/styles/landing_styles.css" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
+<html lang="en" data-bs-theme="auto">
+  <head>
+    <script src="/docs/5.3/assets/js/color-modes.js"></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.112.5">
+    <title>Headers · Bootstrap v5.3</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/headers/">
+
+    
+
+    
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+
+    <!-- Favicons -->
+<link rel="apple-touch-icon" href="/docs/5.3/assets/img/favicons/apple-touch-icon.png" sizes="180x180">
+<link rel="icon" href="/docs/5.3/assets/img/favicons/favicon-32x32.png" sizes="32x32" type="image/png">
+<link rel="icon" href="/docs/5.3/assets/img/favicons/favicon-16x16.png" sizes="16x16" type="image/png">
+<link rel="manifest" href="/docs/5.3/assets/img/favicons/manifest.json">
+<link rel="mask-icon" href="/docs/5.3/assets/img/favicons/safari-pinned-tab.svg" color="#712cf9">
+<link rel="icon" href="/docs/5.3/assets/img/favicons/favicon.ico">
+<link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -14,70 +33,168 @@
 <link href="https://fonts.googleapis.com/css2?family=Raleway&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Montserrat&display=swap" rel="stylesheet">
-</head>
-<body>
-    <div class="container">
-        <div class="site-content">
-            <div class="image-content">
-                <header class="header">
-                    <div class="agency-logo">
-                        <a target="_blank" style="text-decoration:none" class="logo-text" href="https://www.wizardingworld.com/">
-                            <img height="50px" width="50px" src="public/images/Hogwarts.png" alt="Hogwarts"></a>
-                    </div>
-                    <nav class="hogwarts-nav">
-                        <a style="text-decoration:none" href="landing_index.html">Home</a>
-                        <a style="text-decoration:none" href="#">page 2</a>
-                        <a style="text-decoration:none" href="#">page 3</a>
-                        <a style="text-decoration:none" href="#">page 4</a>
-                        <a style="text-decoration:none" href="sign_up_index.html">
-                            <img height="30px" width="30px" src="public/images/account.png" alt="Login/Signup"></a>
+<meta name="theme-color" content="#712cf9">
+
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+
+      .b-example-divider {
+        width: 100%;
+        height: 3rem;
+        background-color: rgba(0, 0, 0, .1);
+        border: solid rgba(0, 0, 0, .15);
+        border-width: 1px 0;
+        box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
+      }
+
+      .b-example-vr {
+        flex-shrink: 0;
+        width: 1.5rem;
+        height: 100vh;
+      }
+
+      .bi {
+        vertical-align: -.125em;
+        fill: currentColor;
+      }
+
+      .nav-scroller {
+        position: relative;
+        z-index: 2;
+        height: 2.75rem;
+        overflow-y: hidden;
+      }
+
+      .nav-scroller .nav {
+        display: flex;
+        flex-wrap: nowrap;
+        padding-bottom: 1rem;
+        margin-top: -1px;
+        overflow-x: auto;
+        text-align: center;
+        white-space: nowrap;
+        -webkit-overflow-scrolling: touch;
+      }
+
+      .btn-bd-primary {
+        --bd-violet-bg: #712cf9;
+        --bd-violet-rgb: 112.520718, 44.062154, 249.437846;
+
+        --bs-btn-font-weight: 600;
+        --bs-btn-color: var(--bs-white);
+        --bs-btn-bg: var(--bd-violet-bg);
+        --bs-btn-border-color: var(--bd-violet-bg);
+        --bs-btn-hover-color: var(--bs-white);
+        --bs-btn-hover-bg: #6528e0;
+        --bs-btn-hover-border-color: #6528e0;
+        --bs-btn-focus-shadow-rgb: var(--bd-violet-rgb);
+        --bs-btn-active-color: var(--bs-btn-hover-color);
+        --bs-btn-active-bg: #5a23c8;
+        --bs-btn-active-border-color: #5a23c8;
+      }
+      .bd-mode-toggle {
+        z-index: 1500;
+      }
+    </style>
+
+    
+    <!-- Custom styles for this template -->
+    <link href="public/styles/landing_styles.css" rel="stylesheet">
+  </head>
+    <body>
+        <main >
+              <header class="p-3 text-bg-dark">
+                <div class="container">
+                  <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+                    <nav>
+                      <img src="public/images/Hogwarts.png" height="50px" width="50px">
                     </nav>
-                </header> 
-                <h1 class="quote"><b>"Hogwarts Express departs soon"</b></h1>
-            </div>
-            <div class="content">
-                <h1 class="content-heading">Find the perfect places to go</h1>
-                <hr class="new1">
-                <div class="second-container">
-                    <div class="first">
-                        <a target="_blank" style="text-decoration:none"  href="https://harrypotter.fandom.com/wiki/The_Burrow">
-                            <img height="400px" width="400px" src="public/images/burrow.jpg" alt="The Burrow"></a>
-                        <span class="img-text">The Burrow</span>
-                    </div>
-                    <div class="first">
-                        <a target="_blank" style="text-decoration:none"  href="https://harrypotter.fandom.com/wiki/Godric%27s_Hollow">
-                            <img height="400px" width="400px" src="public/images/godric.jpeg" alt="Godric's Hollow"></a>
-                        <span class="img-text">Godric's Hollow</span>
-                    </div>
-                    <div class="first">
-                        <a target="_blank" style="text-decoration:none"  href="https://harrypotter.fandom.com/wiki/Malfoy_Manor">
-                            <img height="400px" width="400px" src="public/images/malfoy.jpg" alt="Malfoy Manor"></a>
-                        <span class="img-text">Malfoy Manor</span>
-                    </div>
-                    <div class="first">
-                        <a target="_blank" style="text-decoration:none"  href="https://harrypotter.fandom.com/wiki/Shell_Cottage">
-                            <img height="400px" width="400px" src="public/images/shell.jpg" alt="Shell Cottage"></a>
-                        <span class="img-text">Shell Cottage</span>
-                    </div>
-                </div>  
-            </div>
-            <footer class="footer">
-                <div class="footer1">
-                    <div class="contact">
-                        <h1>Contact Us</h1>
-                        <hr>    
-                    </div>
-                    <div class="contact-details">
-                        Email   - neel.s2@ahduni.edu.in | keval.j@ahduni.edu.in<br>
-                        Contact - +91-9426941917 | +91-9081112253<br>
-                        Github  - <a href="https://github.com/maineel">Neel</a> | <a href="https://github.com/Kevalj9999">Keval</a>
-                    </div>
+                  </div>
                 </div>
-                <div class="credits">
-                    ©️ <a target="_blank" style="text-decoration:none; color: white;" href="https://github.com/maineel/WMC">WMC_4.0</a> | 2023
+                <hr>
+                <div class="container">
+                  <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+            
+                    <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+                      <li><a href="#" class="nav-link px-2 text-white">Home</a></li>
+                      <li><a href="#" class="nav-link px-2 text-white">Features</a></li>
+                      <li><a href="#" class="nav-link px-2 text-white">Pricing</a></li>
+                      <li><a href="#" class="nav-link px-2 text-white">FAQs</a></li>
+                      <li><a href="#" class="nav-link px-2 text-white">About</a></li>
+                    </ul>
+            
+                    <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
+                      <input type="search" class="form-control form-control-dark" placeholder="Search..." aria-label="Search">
+                    </form>
+            
+                    <div class="text-end">
+                      <a href="login_index.html"><button type="button" class="btn btn-outline-light me-2">Login</button></a>
+                      <a href="sign_up_index.html"><button type="button" class="btn btn-warning">Sign-up</button></a>
+                    </div>
+                  </div>
                 </div>
-            </footer>
-        </div>
-    </div>  
-</body>
+        </header>
+          <img src="public\images\hogwarts-legacy.jpg.webp" width="100%" height="600px" class="bg-image">
+          <div class="xyz" style="padding-top: 30px;">
+                <h1 class="content-heading">Find the perfect places to go</h1>ss
+              </div>
+            </div>
+          </section>
+          <div class="album py-5 xyz">
+            <div class="container">
+        
+              <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+                <div class="col">
+                  <div class="card shadow-sm">
+                  <img src="public/images/shell.jpg" height="225" style="border-radius: 1.5%;">
+                  </div>
+                  <p class="content-heading">Shell Cottage</p>                
+                </div>
+                <div class="col">
+                  <div class="card shadow-sm">
+                  <img src="public\images\Loch-Shiel.jpg" height="225" style="border-radius: 1.5%;">
+                    </div>
+                    <p class="content-heading">Loch Sheil</p>    
+                  </div>
+                <div class="col">
+                  <div class="card shadow-sm">
+                    <img src="public/images/burrow.jpg" height="225" style="border-radius: 1.5%;">
+                  </div>
+                  <p class="content-heading">Burrow</p>    
+                </div>
+              </div>
+            </div>
+          </div>
+    </main>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+        <footer class="footer">
+          <div class="footer1">
+              <div class="contact">
+                  <h1>Contact Us</h1>
+                  <hr>    
+              </div>
+              <div class="contact-details">
+                  Email   - neel.s2@ahduni.edu.in | keval.j@ahduni.edu.in<br>
+                  Contact - +91-9426941917 | +91-9081112253<br>
+                  Github  - <a href="https://github.com/maineel">Neel</a> | <a href="https://github.com/Kevalj9999">Keval</a>
+              </div>
+          </div>
+          <div class="credits">
+              ©️ <a target="_blank" style="text-decoration:none; color: black;" href="https://github.com/maineel/WMC">WMC_4.0</a> | 2023
+          </div>
+      </footer>  
+      </body>
 </html>
