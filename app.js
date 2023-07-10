@@ -28,10 +28,18 @@ const userSchema=new mongoose.Schema({
 
 const User=mongoose.model("User",userSchema);
 
+const placesSchema=new mongoose.Schema({
+    img_name:String,
+    heading:String,
+    description:String,
+    card_title:String,
+    img_class:String
+})
+
+const Place=mongoose.model("Place",placesSchema);
 
 app.use(express.static(__dirname));
 app.use(bodyPraser.urlencoded({extended:true}));
-var places_v1=["Hello","World"];
 
 app.get("/sign_up_page",function(req,res){
     res.sendFile("C:/Users/gujar/Desktop/WMC/sign_up_index.html");
@@ -106,10 +114,47 @@ app.get("/",function(req,res){
     res.sendFile("C:/Users/gujar/Desktop/WMC/landing_index.html");
 });
 
-app.get("/places",function(req,res){
-    res.render("places_index",{places:places_v1});
+app.get("/places",async function(req,res){
+    await res.render("places_index",{places:places_v1});
 });
 
+app.get("/add_places",function(req,res){
+    res.render("add_places");
+});
+
+var places_v1;
+app.post("/add_places",async function(req,res){
+    if(req.body.img_name!='' && req.body.heading!='' && req.body.description!='' && req.body.card_title!='' && req.body.img_class!='')
+    {
+        const x=await Place.find({heading:req.body.heading});
+
+        if(x[0]===undefined)
+        {
+            place = new Place({
+                img_name: req.body.img_name,
+                heading: req.body.heading,
+                description: req.body.description,
+                card_title: req.body.card_title,
+                img_class: req.body.img_class
+            })
+            place.save().then(function (doc) {
+                console.log(doc._id.toString());
+            }).catch(function (error) {
+                console.log(error);
+            });
+            places_v1=await Place.find({});
+            res.redirect("/places");
+        }
+       else
+        {
+            console.log("Place aldready exists");
+        }
+    }
+    else
+    {
+        console.log("Please enter value for all the fields");
+    }
+});
 
 app.listen(3000,function(){
     console.log("Server is running on port 3000")
