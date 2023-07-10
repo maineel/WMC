@@ -29,9 +29,9 @@ const userSchema=new mongoose.Schema({
 const User=mongoose.model("User",userSchema);
 
 
-
 app.use(express.static(__dirname));
 app.use(bodyPraser.urlencoded({extended:true}));
+var places_v1=["Hello","World"];
 
 app.get("/sign_up_page",function(req,res){
     res.sendFile("C:/Users/gujar/Desktop/WMC/sign_up_index.html");
@@ -104,6 +104,10 @@ app.post("/login_page",async function(req,res)
 
 app.get("/",function(req,res){
     res.sendFile("C:/Users/gujar/Desktop/WMC/landing_index.html");
+});
+
+app.get("/places",function(req,res){
+    res.render("places_index",{places:places_v1});
 });
 
 

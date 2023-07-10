@@ -24,68 +24,8 @@
     width: 100%;
   }
 
-<<<<<<< HEAD
-.agency-logo {
-    height: 100%;
-    text-align: center;
-    margin-left: 25px;
-    margin-top: 25px;
-    float: left;
-}
-
-.logo-text {
-    color: rgb(0, 0, 0);
-    display: block;
-    font-family: "Helvetica Neue";
-    font-weight: bold;
-}
-
-.hogwarts-nav {
-    float: right;
-    height: 100%;
-}
-
-.hogwarts-nav a {
-    color: rgb(0, 0, 0);
-    font-size: 25px;
-    font-weight: 700;
-    font-family: 'Montserrat', sans-serif;
-    padding: 8% 20px 0 0;
-    display: inline-block;
-}
-
-.site-content {
-    position: absolute;
-
-    width: 100%;
-}
-
-.image-content {
-    background-image: url("../images/landing.jpg");
-    height: 950px;
-    background-repeat: no-repeat;
-    background-size: cover;
-    margin:0;
-    border:0;
-}
-
-.quote {
-    text-align: center;
-    color: rgb(0, 0, 0);
-    padding-top: 30px;
-    margin: 0;
-    font-family: 'Dancing Script', cursive;
-    font-size: 70px;
-}
-
-.content {
-    margin-top: 5px;
-    height: 800px;
-    background-image: linear-gradient( rgb(255, 255, 255), rgb(181, 162, 106));
-=======
 .xyz{
   background-color: black;
->>>>>>> e0a79e24a9a01e05b7e8f3e34f000fc4d027dcc3
 }
 
 .content-heading {
@@ -129,15 +69,6 @@
   font-family: 'Montserrat', sans-serif;
 }
 .credits{
-<<<<<<< HEAD
-    text-align: center;
-    margin-bottom: 0px;
-    padding-top: 65px;
-    color: white;
-    font-size: 20px;
-    height: 25px;
-    width: 100%;
-=======
   margin-bottom: 0px;
   padding-top: 60px;
   color: black;
@@ -145,5 +76,4 @@
   height: 38px;
   width: 400.340px;
   margin-left: 877px;
->>>>>>> e0a79e24a9a01e05b7e8f3e34f000fc4d027dcc3
 }
