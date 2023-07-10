@@ -1,7 +1,5 @@
 
-
 .form-signin {
-
   max-width: 330px;
   padding: 1rem;
 }
@@ -23,8 +21,9 @@
 }
 footer {
   font-size: 20px;
-  margin-top: 31.5%;
+  margin-top: 31%;
   color: #EEEEEE;
   text-align: center;
-
+  bottom: 0;
+  
 }
