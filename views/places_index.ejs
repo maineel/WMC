@@ -40,23 +40,16 @@
       </div>
     </div>
   </header>
-
-  <% for(var i=0;i<places.length;i++) %>
-  <%{%>
-    <h1><%=places[i]%></h1>
-    <br>
-  <%} %>
-  <div class="places-card">
-    <img src="public/images/shell.jpg" height="300 px" width="400px" class="places-img2" alt="Shell Cottage">
-    <div class="card-body">
-      <h5 class="card-title2"><U>Shell Cottage</U></h5>
-      Shell Cottage was the home of Bill Weasley and Fleur Delacour, after their marriage in the summer of 1997. It was
-      located on the outskirts of Tinworth, Cornwall, near the coast. It was a safehouse for various members of the
-      Weasley family and other allies of the Order of the Phoenix during the
-      height of the Second Wizarding War.<br>
-      <a href="#" style="margin-top:20px;" class="btn btn-primary">Explore ➡️</a>
-    </div>
-  </div>
+      <% places.forEach(function(element) { %>
+        <div class="places-card">
+            <img src="<%= element.img_name %>" height="300 px" width="400px" class="<%= element.img_class %>" alt="Shell Cottage">
+            <div class="card-body">
+              <h5 class="<%= element.card_title %>"><U><%= element.heading %></U></h5>
+              <%= element.description %><br>
+              <a href="#" style="margin-top:20px;" class="btn btn-primary">Explore ➡️</a>
+            </div>
+          </div>
+      <% }); %>
   <footer class="footer">
     <div class="footer1">
       <div class="contact">

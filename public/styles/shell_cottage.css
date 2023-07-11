@@ -1,0 +1,94 @@
+.body{
+    background-color: rgb(255, 255, 255);
+}
+.p-3{
+    background-color: black;
+}
+
+@keyframes animation{
+    from {color:rgb(255, 255, 255); }
+    to {color:goldenrod; }
+}
+
+.place-name{
+    border-bottom: 3px solid;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 60px;
+    text-shadow: 4px 4px rgb(67, 66, 66);
+    color: goldenrod;
+    margin-left: 40%;
+    width: 20%;
+    text-align: center;
+    animation-name: animation;
+    animation-duration: 3s;
+    margin-bottom: 25px;
+}
+
+.content1 {
+    margin: auto;
+    display: flex;
+    padding: 20px;
+}
+
+.content-image1 {
+    height: auto;
+    width: auto;
+    margin-left: 5%;
+    margin-bottom: 2%;
+    float: left;
+}  
+.content-text1{
+    font-size: 30px;
+    font-family: 'Courier Prime', monospace;
+    margin-left: 5%;
+    margin-right: 5%;
+    color: rgb(0, 0, 0);
+}
+.content-text{
+    font-size: 30px;
+    font-family: 'Courier Prime', monospace;
+    margin-left: 5%;
+    margin-right: 5%;
+    color: rgb(0, 0, 0);
+}
+.content2 {
+    margin: auto;
+    display: flex;
+    padding: 20px;
+}
+
+.content-image2 {
+    height: auto;
+    width: auto;
+    /* margin-left: 5%; */
+    margin-right: 5%;
+    margin-bottom: 2%;
+    float: right;
+}  
+.content-text2{
+    font-size: 30px;
+    font-family: 'Courier Prime', monospace;
+    margin-left: 5%;
+    margin-right: 5%;
+    color: rgb(0, 0, 0);
+}
+
+.title{
+    margin-top: 2%;
+    margin-left: 5%;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 40px;
+    color: black;
+}
+
+.content-text3{
+    font-size: 25px;
+    font-family: 'Courier Prime', monospace;
+    margin-left: 5%;
+    margin-right: 5%;
+    color: rgb(0, 0, 0);
+}
+
+.location{
+    margin-left: 10%;
+}
