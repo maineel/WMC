@@ -1,6 +1,6 @@
 @media (min-width: 768px) {
     .body {
-
+        z-index: 1;
         background-image: url(../images/frame.jpg);
         background-repeat: no-repeat;
         background-attachment: fixed;

@@ -65,6 +65,23 @@
   font-family: 'Great Vibes', cursive;
 }
 
+
+.explore-more{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.explore-more>.btn  {
+  margin-top: 20px;
+  position: absolute;
+  color: white;
+}
+
+.explore-more>.btn:hover  {
+  color: rgb(0, 0, 0);
+}
+
 .footer {
   height: 420px;
   background-color: #476C6B;
