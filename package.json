@@ -15,6 +15,7 @@
     "jquery": "^3.7.0",
     "jsdom": "^22.1.0",
     "mongoose": "^7.3.1",
+    "mongoose-encryption": "^2.1.2",
     "request": "^2.88.2"
   }
 }

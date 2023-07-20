@@ -1,6 +1,7 @@
 const express =require("express");
 const bodyPraser =require("body-parser");
 const request=require("request");
+const encrypt=require("mongoose-encryption");
 const app=express();
 
 app.set("view engine","ejs");
@@ -28,6 +29,9 @@ const userSchema=new mongoose.Schema({
 
 const User=mongoose.model("User",userSchema);
 
+const secret="WelcomeToTheWorldOfHarryPotter";
+userSchema.plugin(encrypt,{secret: secret, encryptedFields:["password"]});
+
 const placesSchema=new mongoose.Schema({
     img_name:String,
     heading:String,
@@ -50,10 +54,13 @@ app.post("/sign_up_page",async function(req,res)
 {
     if(req.body.fname!='' && req.body.lname!='' && req.body.email!='' && req.body.password!='' && req.body.phone_number!='')
     {
-        const x=await Control.find({email:req.body.email});
-        const y=await Control.find({password:req.body.password});
-
-        if(x[0]!=undefined && y[0]!=undefined)
+        const x=await User.findOne({email:req.body.email});
+        console.log(x);
+        if(x!=null)
+        {
+            console.log("User aldready exists");
+        }
+        else
         {
             user = new User({
                 fName: req.body.fname,
@@ -67,10 +74,6 @@ app.post("/sign_up_page",async function(req,res)
             }).catch(function (error) {
                 console.log(error);
             });
-        }
-        else
-        {
-            console.log("User aldready exists");
         }
     }
     else
@@ -114,7 +117,9 @@ app.get("/",function(req,res){
     res.sendFile("C:/Users/gujar/Desktop/WMC/landing_index.html");
 });
 
+var places_v1;
 app.get("/places",async function(req,res){
+    places_v1=await Place.find({});
     await res.render("places_index",{places:places_v1});
 });
 
@@ -122,7 +127,6 @@ app.get("/add_places",function(req,res){
     res.render("add_places");
 });
 
-var places_v1;
 app.post("/add_places",async function(req,res){
     if(req.body.img_name!='' && req.body.heading!='' && req.body.description!='' && req.body.card_title!='' && req.body.img_class!='')
     {
@@ -154,6 +158,26 @@ app.post("/add_places",async function(req,res){
     {
         console.log("Please enter value for all the fields");
     }
+});
+
+app.get("/flight_book",function(req,res){
+    res.render("flight_book");
+})
+
+var from,to,airline,airline_class,passengers,arrival_date,departure_date;
+
+app.post("/flight_book",function(req,res){
+    from=req.body.from;
+    to=req.body.to;
+    airline=req.body.airline;
+    airline_class=req.body.airline_class;
+    passengers=req.body.passengers;
+    arrival_date=req.body.arrival_date;
+    departure_date=req.body.departure_date;
+})
+
+app.get("/flight_details",async function(req,res){
+    await res.render("flight_details",{from:from,to:to,airline:airline,airline_class:airline_class,passengers:passengers,arrival_date:arrival_date,departure_date,departure_date});
 });
 
 app.listen(3000,function(){

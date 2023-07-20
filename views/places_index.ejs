@@ -19,7 +19,7 @@
       <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
         <nav>
           <a target="_blank" style="text-decoration:none" class="logo-text" href="https://www.wizardingworld.com/">
-            <img height="50px" width="50px" src="public/images/Hogwarts.png" alt="Hogwarts"></a>
+            <img height="50px" width="50px" src="public/images/Hogwarts.png" style="padding-bottom: 15%;" alt="Hogwarts"></a>
         </nav>
       </div>
     </div>
@@ -42,7 +42,7 @@
   </header>
       <% places.forEach(function(element) { %>
         <div class="places-card">
-            <img src="<%= element.img_name %>" height="300 px" width="400px" class="<%= element.img_class %>" alt="Shell Cottage">
+            <img src="<%= element.img_name %>" height="340 px" width="400px" class="<%= element.img_class %>" alt="Shell Cottage">
             <div class="card-body">
               <h5 class="<%= element.card_title %>"><U><%= element.heading %></U></h5>
               <%= element.description %><br>
