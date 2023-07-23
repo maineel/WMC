@@ -68,14 +68,51 @@
                             onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'dd-mm-yyyy';}"
                             required="" class="hasDatepicker">
                     </div>
-                    <div id="passengers" class="field-agileinfo-spc form-w3-agile-text1">
+                </div>
+                <div class="main-flex-w3ls-sectns">
+                    <div id="adults" class="field-agileinfo-spc form-w3-agile-text1">
                         <select class="form-control">
-                            <option value="">No. of passengers</option>
+                            <option value="">Adults</option>
                             <option value="1">1</option>
                             <option value="2">2</option>
                             <option value="3">3</option>
                             <option value="4">4</option>
-                            <option value="5">5+</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                        </select>
+                    </div>
+                    <div id="children" class="field-agileinfo-spc form-w3-agile-text1">
+                        <select class="form-control">
+                            <option value="">Children</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="main-flex-w3ls-sectns">
+                    <div id="flight-type" class="field-agileinfo-spc form-w3-agile-text1">
+                        <select class="form-control">
+                            <option value="">Flight type</option>
+                            <option value="Non-stop">Non-stop</option>
+                            <option value="Layover">Layover</option>
+                        </select>
+                    </div>
+                    <div id="currency" class="field-agileinfo-spc form-w3-agile-text1">
+                        <select class="form-control">
+                            <option value="">Currency</option>
+                            <option value="AED">AED</option>
+                            <option value="CAD">CAD</option>
+                            <option value="EUR">EUR</option>
+                            <option value="INR">INR</option>
+                            <option value="USD">USD</option>
+                            <option value="AUD">AUD</option>
                         </select>
                     </div>
                 </div>
@@ -83,12 +120,12 @@
                     <h6>Select your Fare</h6>
                     <ul class="radio-buttons-w3-agileits">
                         <li>
-                            <input type="radio" id="a-option" name="selector1" onclick="displayRadioValue()">
+                            <input type="radio" class="radio-reminder" name="group" value="false" onclick="displayRadioValue()">
                             <label for="a-option">One Way</label>
                             <div class="check"></div>
                         </li>
                         <li>
-                            <input type="radio" id="b-option" name="selector1" onclick="displayRadioValue()">
+                            <input type="radio" class="radio-reminder" name="group" value="true" onclick="displayRadioValue()">
                             <label for="b-option">Round-Trip</label>
                             <div class="check">
                                 <div class="inside"></div>
@@ -99,7 +136,7 @@
                 </div>
                 <div class="main-flex-w3ls-sectns">
                     <div class="field-agileinfo-spc form-w3-agile-text1">
-                        <input id="datepicker" name="Text" type="date" placeholder="Departure Date" value=""
+                        <input class="return-date" id="datepicker" name="return-date" type="date" placeholder="Departure Date" value=""
                             onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'dd-mm-yyyy';}"
                             required="" class="hasDatepicker">
                     </div>
@@ -113,5 +150,4 @@
     </main>
     <script src="./scripts/flight_book.js" ></script>
 </body>
-
 </html>
