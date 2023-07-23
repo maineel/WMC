@@ -26,22 +26,22 @@ selectDate.addEventListener('change', function handleChange(event) {
 const selectAdults = document.getElementById('adults');
 selectAdults.addEventListener('change', function handleChange(event) {
     var adultSelect = event.target.value;
-    alert("Passengers: " + passengerSelect);
+    alert("Adults: " + adultSelect);
 });
 const selectChildren = document.getElementById('children');
 selectChildren.addEventListener('change', function handleChange(event) {
     var childrenSelect = event.target.value;
-    alert("Passengers: " + childrenSelect);
+    alert("Children: " + childrenSelect);
 });
 const selectType = document.getElementById('flight-type');
 selectType.addEventListener('change', function handleChange(event) {
     var typeSelect = event.target.value;
-    alert("Passengers: " + typeSelect);
+    alert("Flight-type: " + typeSelect);
 });
 const selectCurrency = document.getElementById('currency');
 selectCurrency.addEventListener('change', function handleChange(event) {
     var currencySelect = event.target.value;
-    alert("Passengers: " + currencySelect);
+    alert("Currency: " + currencySelect);
 });
 const selectReturnDate = document.getElementsByClassName('return-date')[0];
 selectReturnDate.addEventListener('change', function handleChange(event) {
