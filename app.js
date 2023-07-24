@@ -2,10 +2,12 @@ const express =require("express");
 const bodyPraser =require("body-parser");
 const request=require("request");
 const encrypt=require("mongoose-encryption");
+const https=require("https");
 const app=express();
 
 app.set("view engine","ejs");
 const mongoose=require("mongoose");
+const { METHODS } = require("http");
 
 mongoose.connect("mongodb://127.0.0.1/WMC",{useNewUrlParser:true});
 
@@ -164,20 +166,114 @@ app.get("/flight_book",function(req,res){
     res.render("flight_book");
 })
 
-var from,to,airline,airline_class,passengers,arrival_date,departure_date;
+var from,to,airline_class,adults,infants,children,arrival_date,departure_date,nonstop,currency;
 
 app.post("/flight_book",function(req,res){
     from=req.body.from;
     to=req.body.to;
-    airline=req.body.airline;
+    infants=req.body.infants;
     airline_class=req.body.airline_class;
-    passengers=req.body.passengers;
+    adults=req.body.adults;
     arrival_date=req.body.arrival_date;
     departure_date=req.body.departure_date;
+    children=req.body.children;
+    nonstop=req.body.nonstop;
+    currency=req.body.currenc
+    res.redirect("/flight_details");
+    //console.log(from+" "+to+" "+infants+" "+children+" "+adults+" "+arrival_date+" "+departure_date+" "+nonstop+" "+currency+" "+airline_class);
 })
 
-app.get("/flight_details",async function(req,res){
+/*app.get("/flight_details",async function(req,res){
     await res.render("flight_details",{from:from,to:to,airline:airline,airline_class:airline_class,passengers:passengers,arrival_date:arrival_date,departure_date,departure_date});
+});*/
+
+
+    // Function to get the access token
+    function getAccessToken(clientId, clientSecret) {
+        return new Promise((resolve, reject) => {
+        const tokenEndpoint = 'https://test.api.amadeus.com/v1/security/oauth2/token';
+        const authString = `${clientId}:${clientSecret}`;
+        const base64AuthString = Buffer.from(authString).toString('base64');
+    
+        const options = {
+            method: 'POST',
+            headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+            'Authorization': `Basic ${base64AuthString}`
+            }
+        };
+    
+        const req = https.request(tokenEndpoint, options, (res) => {
+            let data = '';
+    
+            res.on('data', (chunk) => {
+            data += chunk;
+            });
+    
+            res.on('end', () => {
+            if (res.statusCode >= 200 && res.statusCode < 300) {
+                const response = JSON.parse(data);
+                resolve(response.access_token);
+            } else {
+                reject(new Error(`Failed to get access token. Status code: ${res.statusCode}`));
+            }
+            });
+        });
+    
+        req.on('error', (error) => {
+            reject(error);
+        });
+    
+        req.write('grant_type=client_credentials');
+        req.end();
+        });
+    }
+
+var flight_details;
+app.get("/flight_details",async function(req,res)
+{
+    access_token=await getAccessToken("rEwzGVYgsiG0tnWzuNXG0s7sGEDXitZ0","zBEQyAQru0SBqRAe");
+    console.log(access_token);
+    var url="https://test.api.amadeus.com/v2/shopping/flight-offers?";
+    url=url+"originLocationCode="+from+"&destinationLocationCode="+to+"&departureDate="+departure_date;
+    if(arrival_date!=null)
+    {
+        url=url+"&returnDate="+arrival_date;
+    }
+    url=url+"&adults="+adults;
+    if(children!=null)
+    {
+        url=url+"&children="+children;
+    }
+    if(infants!=null)
+    {
+        url=url+"&infants="+infants;
+    }
+    if(airline_class!=null)
+    {
+        url=url+"&travelClass="+airline_class;
+    }
+    if(nonstop!=null)
+    {
+        url=url+"&nonStop="+nonstop;
+    }
+    if(currency!=null)
+    {
+        url=url+"&currencyCode="+currency;
+    }
+    url=url+"&max=5";
+    const options = {
+        headers: {
+            Authorization: 'Bearer '+access_token
+        }
+    }
+    https.get(url,options,function(response){
+        console.log(response.statusCode);
+        response.on("data",function(data){
+            flight_details=JSON.parse(data);
+            console.log(flight_details);
+        });
+    });
 });
 
 app.listen(3000,function(){
