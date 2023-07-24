@@ -1,8 +1,12 @@
 .body{
-    background-color: rgb(255, 255, 255);
+    background-image: url("https://static.wikia.nocookie.net/harrypotter/images/0/08/Site-background-dark/revision/latest?cb=20221229145823");
+    /* background-color: rgb(0, 0, 0); */
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
 }
 .p-3{
-    background-color: black;
+    background-color: rgba(var(--theme-page-background-color--rgb),0.95);;
 }
 
 @keyframes animation{
@@ -23,7 +27,12 @@
     animation-duration: 3s;
     margin-bottom: 25px;
 }
-
+.content{
+    margin-left: 4%;
+    margin-right: 4%;
+    background-color: rgba(20,37,43,255) ;
+    opacity: 0.85;
+}
 .content1 {
     margin: auto;
     display: flex;
@@ -31,10 +40,10 @@
 }
 
 .content-image1 {
+    opacity: 1;
     height: auto;
     width: auto;
     margin-left: 5%;
-    margin-bottom: 2%;
     float: left;
 }  
 .content-text1{
@@ -42,14 +51,14 @@
     font-family: 'Courier Prime', monospace;
     margin-left: 5%;
     margin-right: 5%;
-    color: rgb(0, 0, 0);
+    color: goldenrod;
 }
 .content-text{
     font-size: 30px;
     font-family: 'Courier Prime', monospace;
     margin-left: 5%;
     margin-right: 5%;
-    color: rgb(0, 0, 0);
+    color: goldenrod;
 }
 .content2 {
     margin: auto;
@@ -58,6 +67,7 @@
 }
 
 .content-image2 {
+    opacity: 1;
     height: auto;
     width: auto;
     /* margin-left: 5%; */
@@ -70,7 +80,7 @@
     font-family: 'Courier Prime', monospace;
     margin-left: 5%;
     margin-right: 5%;
-    color: rgb(0, 0, 0);
+    color: goldenrod;
 }
 
 .title{
@@ -78,7 +88,7 @@
     margin-left: 5%;
     font-family: 'Bebas Neue', sans-serif;
     font-size: 40px;
-    color: black;
+    color: goldenrod;
 }
 
 .content-text3{
@@ -86,9 +96,52 @@
     font-family: 'Courier Prime', monospace;
     margin-left: 5%;
     margin-right: 5%;
-    color: rgb(0, 0, 0);
+    color: goldenrod;
 }
 
 .location{
     margin-left: 10%;
 }
+
+
+.footer {
+    height: 420px;
+    background-color: rgba(20,37,43,255);
+    opacity: 0.95;
+  }
+  
+  .footer1 {
+    margin-left: 25%;
+    height: 300px;
+    width: 400px;
+    color: white;
+    font-size: 30px;
+    font-family: 'Raleway', sans-serif;
+  }
+  
+  .contact {
+    display: inline;
+    margin-left: 400px;
+    height: 300px;
+    width: 400px;
+    color: rgb(255, 255, 255);
+  }
+  
+  .contact-details {
+    color: rgb(255, 251, 251);
+    height: 100px;
+    width: 700px;
+    font-size: 25px;
+    font-family: 'Montserrat', sans-serif;
+  }
+  
+  .credits {
+    margin: auto;
+    bottom: 0;
+    padding-top: 80px;
+    color: rgb(255, 255, 255);
+    font-size: 25px;
+    height: 38px;
+    width: 70%;
+    text-align: center;
+  }
