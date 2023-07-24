@@ -18,11 +18,6 @@ selectClass.addEventListener('change', function handleChange(event) {
     var classSelect = event.target.value;
     alert("Class: " + classSelect);
 });
-const selectDate = document.getElementById('datepicker');
-selectDate.addEventListener('change', function handleChange(event) {
-    var dateSelect = event.target.value;
-    alert("Date: " + dateSelect);
-});
 const selectAdults = document.getElementById('adults');
 selectAdults.addEventListener('change', function handleChange(event) {
     var adultSelect = event.target.value;
@@ -32,6 +27,11 @@ const selectChildren = document.getElementById('children');
 selectChildren.addEventListener('change', function handleChange(event) {
     var childrenSelect = event.target.value;
     alert("Children: " + childrenSelect);
+});
+const selectInfants = document.getElementById('infants');
+selectInfants.addEventListener('change', function handleChange(event) {
+    var infantsSelect = event.target.value;
+    alert("Infants: " + infantsSelect);
 });
 const selectType = document.getElementById('flight-type');
 selectType.addEventListener('change', function handleChange(event) {
@@ -43,8 +43,14 @@ selectCurrency.addEventListener('change', function handleChange(event) {
     var currencySelect = event.target.value;
     alert("Currency: " + currencySelect);
 });
-const selectReturnDate = document.getElementsByClassName('return-date')[0];
-selectReturnDate.addEventListener('change', function handleChange(event) {
-    var returnDateSelect = event.target.value;
-    alert("Date: " + returnDateSelect);
+
+document.getElementsByClassName("datepicker")[0].addEventListener("change", function() {
+    var input = this.value;
+    var dateEntered = new Date(input);
+    alert("Departure date: " + input); //e.g. 201g. Fri Nov 13 2015 00:00:00 GMT+0000 (GMT Standard Time)
+});
+document.getElementsByClassName("datepicker")[1].addEventListener("change", function() {
+    var input = this.value;
+    var dateEntered = new Date(input);
+    alert("Return date:" + input); //e.g. 201g. Fri Nov 13 2015 00:00:00 GMT+0000 (GMT Standard Time)
 });
