@@ -1,5 +1,5 @@
-.body {
-    z-index: 1;
+body {
+    background-image: url(../images/landing.jpg);
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
@@ -10,8 +10,9 @@
     text-align: center;
     margin: auto;
     width: 50%;
-    color: rgb(57, 57, 57);
+    color: rgb(0, 0, 0);
     margin-bottom: 1%;
+    text-shadow: #ffffff;
 }
 
 .d-flex {
@@ -25,14 +26,15 @@
 }
 
 .flight-card {
+    background-color: #ffffff;
     padding: 10px;
-    height: 130px;
+    height: 150px;
     margin: auto;
     margin-bottom: 30px;
     width: 40%;
     border: 1px solid;
     padding: 10px;
-    box-shadow: 5px 10px #888888;
+    box-shadow: 5px 10px #000000;
     justify-content: center;
     display: flex;
 }
