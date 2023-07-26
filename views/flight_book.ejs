@@ -16,7 +16,7 @@
                 <h2 class="sub-heading-agileits">Booking Details</h2>
                 <div class="main-flex-w3ls-sectns">
                     <div class="field-agileinfo-spc form-w3-agile-text1">
-                        <select id="from" class="form-control" name="from" onchange="test()">
+                        <select id="from" class="form-control" name="from" onchange="test()" required>
                             <option>From</option>
                             <option class="from" value="LHR">London</option>
                             <option class="from" value="CDG">Paris</option>
@@ -29,7 +29,7 @@
                         </select>
                     </div>
                     <div class="field-agileinfo-spc form-w3-agile-text2">
-                        <select id="to" name="to" class="form-control">
+                        <select id="to" name="to" class="form-control" required>
                             <option>To</option>
                             <option class="from" value="LHR">London</option>
                             <option class="from" value="CDG">Paris</option>
@@ -55,7 +55,8 @@
                 </div>  
                 <div class="main-flex-w3ls-sectns">
                     <div id="adults" class="field-agileinfo-spc form-w3-agile-text1">
-                        <select name="adults" class="form-control">
+                        <select name="adults" class="form-control" required>
+                            <option value=0>Adults</option>
                             <option value=1>1</option>
                             <option value=2>2</option>
                             <option value=3>3</option>
@@ -70,6 +71,7 @@
                     </div>
                     <div id="children" class="field-agileinfo-spc form-w3-agile-text1">
                         <select name="children" class="form-control">
+                            <option value=0>Children</option>
                             <option value=1>1</option>
                             <option value=2>2</option>
                             <option value=3>3</option>
@@ -79,6 +81,7 @@
                     </div>
                     <div id="infants" class="field-agileinfo-spc form-w3-agile-text1">
                         <select name="infants" class="form-control">
+                            <option value=0>Infants</option>
                             <option value=1>1</option>
                             <option value=2>2</option>
                             <option value=3>3</option>
@@ -90,14 +93,14 @@
                 <div class="main-flex-w3ls-sectns">
                     <div id="flight-type" class="field-agileinfo-spc form-w3-agile-text1">
                         <select name="nonstop"class="form-control">
-                            <option value="">Flight type</option>
+                            <option value="Flight type">Flight type</option>
                             <option value=true>Non-stop</option>
                             <option value=false>Layover</option>
                         </select>
                     </div>
                     <div id="currency" class="field-agileinfo-spc form-w3-agile-text1">
                         <select name="currency" class="form-control">
-                            <option value="">Currency</option>
+                            <option value="Currency">Currency</option>
                             <option value="AED">AED</option>
                             <option value="CAD">CAD</option>
                             <option value="EUR">EUR</option>
