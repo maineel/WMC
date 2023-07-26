@@ -1,0 +1,106 @@
+.body {
+    z-index: 1;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+.top-heading {
+    font-family: 'Josefin Sans', sans-serif;
+    text-align: center;
+    margin: auto;
+    width: 50%;
+    color: rgb(57, 57, 57);
+    margin-bottom: 1%;
+}
+
+.d-flex {
+    margin-top: 10px;
+}
+
+.navbar {
+    height: 100px;
+    width: 100%;
+    margin-bottom: 50px;
+}
+
+.flight-card {
+    padding: 10px;
+    height: 130px;
+    margin: auto;
+    margin-bottom: 30px;
+    width: 40%;
+    border: 1px solid;
+    padding: 10px;
+    box-shadow: 5px 10px #888888;
+    justify-content: center;
+    display: flex;
+}
+
+.airline-details {
+    top: 50%;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.5rem;
+    text-align: center;
+    margin-right: 10%;
+}
+
+.depart {
+    font-family: 'Roboto Mono', monospace;
+    text-align: center;
+    margin-right: 10%;
+}
+
+.middle {
+    justify-content: center;
+    display: flex;
+    align-items: center;
+}
+
+.land {
+    font-family: 'Roboto Mono', monospace;
+    text-align: center;
+    margin-left: 10%;
+}
+
+.price-details {
+    top: 50%;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.5rem;
+    text-align: center;
+    align-items: center;
+    margin-left: 10%;
+}
+
+.btn-group {
+    font-family: 'Roboto Mono', monospace;
+}
+
+.places-img1 {
+    margin-right: 20px;
+    float: left;
+}
+
+.card-body {
+    color: white;
+    font-size: 18px;
+}
+
+.card-title1 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 25px;
+    text-align: left;
+    margin-bottom: 10px;
+}
+
+.places-img2 {
+    margin-left: 20px;
+    float: right;
+}
+
+.card-title2 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 25px;
+    text-align: left;
+    margin-bottom: 10px;
+}

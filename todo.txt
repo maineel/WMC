@@ -1,0 +1,13 @@
+no of bookable seats
+stops
+duration 
+departure code 
+arrival code 
+departure terminal
+arrival terminal
+departure time
+arrival time
+carrier code 
+total 
+currency
+additional services
