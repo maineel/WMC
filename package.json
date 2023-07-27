@@ -1,7 +1,7 @@
 {
   "name": "wmc",
   "version": "1.0.0",
-  "description": "",
+  "description": "Group Members:\r 1.) Neel Sheth\r 2.) Keval Juthani",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -15,7 +15,7 @@
     "https": "^1.0.0",
     "jquery": "^3.7.0",
     "jsdom": "^22.1.0",
-    "mongoose": "^7.3.1",
+    "mongoose": "^7.4.1",
     "mongoose-encryption": "^2.1.2",
     "request": "^2.88.2"
   }
