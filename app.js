@@ -235,8 +235,8 @@ app.post("/flight_book",function(req,res){
       
         return dateRegex.test(dateString);
       }
-      
-var flight_details;
+
+var flight_details,flights=[];
 app.get("/flight_details",async function(req,res)
 {
     access_token=await getAccessToken("rEwzGVYgsiG0tnWzuNXG0s7sGEDXitZ0","zBEQyAQru0SBqRAe");
@@ -274,7 +274,7 @@ app.get("/flight_details",async function(req,res)
     }
     else
     {
-        url=url+"&max=7";
+        url=url+"&max=4";
     }
     const options = {
         headers: {
@@ -282,13 +282,13 @@ app.get("/flight_details",async function(req,res)
         }
     }
     var count;
-    var return_stops=[],return_duration=[],return_departure_code=[],return_arrival_code=[],return_departure_terminal=[],return_arrival_terminal=[],return_departure_time=[],return_arrival_time=[],return_carrier_code=[];
-    var bookableSeats=[],stops=[],duration=[],departure_code=[],arrival_code=[],departure_terminal=[],arrival_terminal=[],departure_time=[],arrival_time=[],carrier_code=[],total=[],data_currency=[],additional_services=[];
+    var return_stops,return_duration,return_departure_code,return_arrival_code,return_departure_terminal,return_arrival_terminal,return_departure_time,return_arrival_time,return_carrier_code,carrier_name;
+    var bookableSeats,stops,duration,departure_code,arrival_code,departure_terminal,arrival_terminal,departure_time,arrival_time,carrier_code,total,data_currency,additional_services;
     https.get(url,options,function(response){
         console.log(response.statusCode);
         response.on("data",async function(data){
             flight_details=JSON.parse(data);
-            console.log(flight_details.data[0]);
+            //console.log(flight_details.data[0]);
             if(response.statusCode===200)
             {
                 count=flight_details.meta.count;
@@ -296,63 +296,119 @@ app.get("/flight_details",async function(req,res)
                 {
                     for(let i=0;i<count;i++)
                     {
-                        bookableSeats[i]=flight_details.data[i].numberOfBookableSeats;
-                        stops[i]=flight_details.data[i].itineraries[0].segments[0].numberOfStops;
-                        duration[i]=flight_details.data[i].itineraries[0].duration;
-                        departure_code[i]=flight_details.data[i].itineraries[0].segments[0].departure.iataCode;
-                        departure_time[i]=flight_details.data[i].itineraries[0].segments[0].departure.at;
-                        departure_terminal[i]=flight_details.data[i].itineraries[0].segments[0].departure.terminal;
-                        arrival_code[i]=flight_details.data[i].itineraries[0].segments[0].arrival.iataCode;
-                        arrival_time[i]=flight_details.data[i].itineraries[0].segments[0].arrival.at;
-                        arrival_terminal[i]=flight_details.data[i].itineraries[0].segments[0].arrival.terminal;
-                        carrier_code[i]=flight_details.data[i].itineraries[0].segments[0].carrierCode;
-                        total[i]=flight_details.data[i].price.grandTotal;
-                        data_currency[i]=flight_details.data[i].price.currency;
-                        additional_services[i]=flight_details.data[i].price.additionalServices;
+                        bookableSeats=flight_details.data[i].numberOfBookableSeats;
+                        stops=flight_details.data[i].itineraries[0].segments[0].numberOfStops;
+                        duration=flight_details.data[i].itineraries[0].duration;
+                        departure_code=flight_details.data[i].itineraries[0].segments[0].departure.iataCode;
+                        departure_time=flight_details.data[i].itineraries[0].segments[0].departure.at;
+                        departure_terminal=flight_details.data[i].itineraries[0].segments[0].departure.terminal;
+                        arrival_code=flight_details.data[i].itineraries[0].segments[0].arrival.iataCode;
+                        arrival_time=flight_details.data[i].itineraries[0].segments[0].arrival.at;
+                        arrival_terminal=flight_details.data[i].itineraries[0].segments[0].arrival.terminal;
+                        carrier_code=flight_details.data[i].itineraries[0].segments[0].carrierCode;
+                        total=flight_details.data[i].price.grandTotal;
+                        data_currency=flight_details.data[i].price.currency;
+                        additional_services=flight_details.data[i].price.additionalServices;
                         if(isValidDate(arrival_date))
                         {
-                            return_stops[i]=flight_details.data[i].itineraries[1].segments[0].numberOfStops;
-                            return_duration[i]=flight_details.data[i].itineraries[1].duration;
-                            return_departure_code[i]=flight_details.data[i].itineraries[1].segments[0].departure.iataCode;
-                            return_departure_time[i]=flight_details.data[i].itineraries[1].segments[0].departure.at;
-                            return_departure_terminal[i]=flight_details.data[i].itineraries[1].segments[0].departure.terminal;
-                            return_arrival_code[i]=flight_details.data[i].itineraries[1].segments[0].arrival.iataCode;
-                            return_arrival_time[i]=flight_details.data[i].itineraries[1].segments[0].arrival.at;
-                            return_arrival_terminal[i]=flight_details.data[i].itineraries[1].segments[0].arrival.terminal;
-                            return_carrier_code[i]=flight_details.data[i].itineraries[1].segments[0].carrierCode;
+                            return_stops=flight_details.data[i].itineraries[1].segments[0].numberOfStops;
+                            return_duration=flight_details.data[i].itineraries[1].duration;
+                            return_departure_code=flight_details.data[i].itineraries[1].segments[0].departure.iataCode;
+                            return_departure_time=flight_details.data[i].itineraries[1].segments[0].departure.at;
+                            return_departure_terminal=flight_details.data[i].itineraries[1].segments[0].departure.terminal;
+                            return_arrival_code=flight_details.data[i].itineraries[1].segments[0].arrival.iataCode;
+                            return_arrival_time=flight_details.data[i].itineraries[1].segments[0].arrival.at;
+                            return_arrival_terminal=flight_details.data[i].itineraries[1].segments[0].arrival.terminal;
+                            return_carrier_code=flight_details.data[i].itineraries[1].segments[0].carrierCode;
                         }
+                        var flight={
+                            bookableSeats:bookableSeats,
+                            stops:stops,
+                            duration:duration,
+                            departure_code:departure_code,
+                            departure_terminal:departure_terminal,
+                            departure_time:departure_time.substring(11),
+                            arrival_code:arrival_code,
+                            arrival_terminal:arrival_terminal,
+                            arrival_time:arrival_time.substring(11),
+                            carrier_code:carrier_code,
+                            total:total,
+                            data_currency:data_currency,
+                            additional_services:additional_services
+                        };
+                        flights[i]=flight;
                     }
-                    console.log(bookableSeats);
-                    console.log(stops);
-                    console.log(duration);
-                    console.log(departure_code);
-                    console.log(departure_terminal);
-                    console.log(departure_time);
-                    console.log(arrival_code);
-                    console.log(arrival_terminal);
-                    console.log(arrival_time);
-                    console.log(carrier_code);
-                    console.log(return_stops);
-                    console.log(return_duration);
-                    console.log(return_departure_code);
-                    console.log(return_departure_terminal);
-                    console.log(return_departure_time);
-                    console.log(return_arrival_code);
-                    console.log(return_arrival_terminal);
-                    console.log(return_arrival_time);
-                    console.log(return_carrier_code);
-                    console.log(total);
-                    console.log(data_currency);
-                    console.log(additional_services);
+                    res.render("flight_details",{flights:flights});
+                }
+                else
+                {
+                    res.redirect("/flight_book")
                 }
             }
         })
     });
-
-        
 });
+
 
 app.listen(3000,function(){
     console.log("Server is running on port 3000")
 });
 
+
+/*var url2="https://test.api.amadeus.com/v1/reference-data/airlines?airlineCodes="+carrier_code[i];
+                            https.get(url2,options,function(response2){
+                                console.log(response2.statusCode);
+                                response2.on("data2",async function(data2){
+                                    carrier_details=JSON.parse(data2);
+                                    console.log(carrier_details.data[0].businessName);
+                                    carrier_name[i]=carrier_details.data[0].businessName;
+                                })
+                            });*/
+
+            
+/*var hotelid=[];
+app.get("/hotel_search",async function(req,res){
+    access_token=await getAccessToken("rEwzGVYgsiG0tnWzuNXG0s7sGEDXitZ0","zBEQyAQru0SBqRAe");
+    console.log(access_token);
+    var url="https://test.api.amadeus.com/v1/reference-data/locations/hotels/by-city?cityCode="+"NCL"+"&radius=5&ratings=4";
+    const options = {
+        headers: {
+            Authorization: 'Bearer '+access_token
+        }
+    };
+
+    https.get(url,options,function(response){
+        console.log(response.statusCode);
+        response.on("data",async function(data){
+            hotel_details=JSON.parse(data);
+            console.log(hotel_details);
+            for(let i=0;i<hotel_details.meta.count;i++)
+            {
+                hotelid[i]=hotel_details.data[i].hotelId;
+            }
+        });
+    });
+    res.redirect("/hotel_details");
+});
+
+app.get("/hotel_details",async function(req,res){
+    access_token=await getAccessToken("rEwzGVYgsiG0tnWzuNXG0s7sGEDXitZ0","zBEQyAQru0SBqRAe");
+    console.log(access_token);
+    var url="https://test.api.amadeus.com/v3/shopping/hotel-offers?";
+    const options = {
+        headers: {
+            Authorization: 'Bearer '+access_token
+        }
+    };
+    url=url+"hotelIds="+hotelid;
+    url=url+"&adults="+adults+"&checkInDate="+checkindate+"&checkOutDate="+checkoutdate; 
+    if(rooms!=undefined){
+        url=url+"&roomQuantity="+rooms;
+    }
+    if(boardtype!=undefined){
+        url=url+"&boardtype="+boardtype;
+    }
+    if(payment_currency!=undefined){
+        url=url+"&currency="+payment_currency;
+    }
+});*/
