@@ -11,3 +11,9 @@ carrier code
 total 
 currency
 additional services
+
+
+ratings
+adults
+checkInDate
+checkOutDate
