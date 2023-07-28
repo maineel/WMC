@@ -9,40 +9,40 @@ app.set("view engine","ejs");
 const mongoose=require("mongoose");
 const { METHODS } = require("http");
 
-// mongoose.connect("mongodb://127.0.0.1/WMC",{useNewUrlParser:true});
+mongoose.connect("mongodb://127.0.0.1/WMC",{useNewUrlParser:true});
 
-// const controlSchema=new mongoose.Schema({
-//     fName:String,
-//     lName:String,
-//     email:String,
-//     password:String,
-//     phone_number:Number
-// })
+const controlSchema=new mongoose.Schema({
+    fName:String,
+    lName:String,
+    email:String,
+    password:String,
+    phone_number:Number
+})
 
-// const Control=mongoose.model("Control",controlSchema);
+const Control=mongoose.model("Control",controlSchema);
 
-// const userSchema=new mongoose.Schema({
-//     fName:String,
-//     lName:String,
-//     email:String,
-//     password:String,
-//     phone_number:Number
-// })
+const userSchema=new mongoose.Schema({
+    fName:String,
+    lName:String,
+    email:String,
+    password:String,
+    phone_number:Number
+})
 
-// const User=mongoose.model("User",userSchema);
+const User=mongoose.model("User",userSchema);
 
-// const secret="WelcomeToTheWorldOfHarryPotter";
-// userSchema.plugin(encrypt,{secret: secret, encryptedFields:["password"]});
+const secret="WelcomeToTheWorldOfHarryPotter";
+userSchema.plugin(encrypt,{secret: secret, encryptedFields:["password"]});
 
-// const placesSchema=new mongoose.Schema({
-//     img_name:String,
-//     heading:String,
-//     description:String,
-//     card_title:String,
-//     img_class:String
-// })
+const placesSchema=new mongoose.Schema({
+    img_name:String,
+    heading:String,
+    description:String,
+    card_title:String,
+    img_class:String
+})
 
-// const Place=mongoose.model("Place",placesSchema);
+const Place=mongoose.model("Place",placesSchema);
 
 app.use(express.static(__dirname));
 app.use(bodyPraser.urlencoded({extended:true}));
