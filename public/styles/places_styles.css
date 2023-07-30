@@ -16,6 +16,7 @@
     }
 
     .places-card {
+        box-shadow: 10px 10px rgb(39, 39, 39);
         position: relative;
         padding: 10px;
         height: 360px;
@@ -26,6 +27,7 @@
     }
 
     .places-img1 {
+        border-radius: 1%;
         margin-right: 20px;
         float: left;
     }
@@ -43,6 +45,7 @@
     }
 
     .places-img2 {
+        border-radius: 1%;
         margin-left: 20px;
         float: right;
     }

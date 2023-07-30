@@ -28,6 +28,7 @@
     margin-bottom: 25px;
 }
 .content{
+    border-radius: 1%;
     margin-left: 4%;
     margin-right: 4%;
     background-color: rgba(20,37,43,255) ;
@@ -40,6 +41,7 @@
 }
 
 .content-image1 {
+    border-radius: 1%;
     opacity: 1;
     height:50%;
     width: 50%;
@@ -67,6 +69,7 @@
 }
 
 .content-image2 {
+    border-radius: 1%;
     opacity: 1;
     height: 60%;
     width: 45%;
