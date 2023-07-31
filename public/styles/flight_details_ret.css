@@ -61,8 +61,9 @@ body {
 }
 
 .middle {
+    margin-top: 15%;
     justify-content: center;
-    display: flex;
+    display: inline-block;
     align-items: center;
 }
 
@@ -71,6 +72,7 @@ body {
     text-align: center;
     margin-left: 30%;
 }
+
 
 .price-details {
     top: 50%;
