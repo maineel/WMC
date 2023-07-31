@@ -1,0 +1,124 @@
+body {
+    background-image: url(../images/landing.jpg);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+.top-heading {
+    font-family: 'Josefin Sans', sans-serif;
+    text-align: center;
+    margin: auto;
+    width: 50%;
+    color: rgb(0, 0, 0);
+    margin-bottom: 1%;
+    text-shadow: #ffffff;
+}
+
+.d-flex {
+    margin-top: 10px;
+}
+
+.navbar {
+    height: 100px;
+    width: 100%;
+    margin-bottom: 50px;
+}
+
+.ret-container {
+    background-color: #ffffff;
+    border: 1px solid;
+    width: 40%;
+    margin: auto;
+    box-shadow: 5px 10px #000000;
+    justify-content: center;
+}
+
+.flight-card {
+    margin: auto;
+    width: fit-content;
+    padding: 10px;
+    height: auto;
+    margin: auto;
+    margin-bottom: 1%;
+    margin-top: 1%;
+    display: flex;
+    justify-content: center;
+}
+
+.airline-details {
+    top: 50%;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.5rem;
+    text-align: center;
+    margin-right: 30%;
+}
+
+.depart {
+    font-family: 'Roboto Mono', monospace;
+    text-align: center;
+    margin-right: 30%;
+}
+
+.middle {
+    justify-content: center;
+    display: flex;
+    align-items: center;
+}
+
+.land {
+    font-family: 'Roboto Mono', monospace;
+    text-align: center;
+    margin-left: 30%;
+}
+
+.price-details {
+    top: 50%;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.5rem;
+    text-align: center;
+    align-items: center;
+    margin-left: 30%;
+}
+
+.btn-group {
+    font-family: 'Roboto Mono', monospace;
+}
+
+.places-img1 {
+    margin-right: 20px;
+    float: left;
+}
+
+.card-body {
+    color: white;
+    font-size: 18px;
+}
+
+.card-title1 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 25px;
+    text-align: left;
+    margin-bottom: 10px;
+}
+
+.places-img2 {
+    margin-left: 20px;
+    float: right;
+}
+
+.card-title2 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 25px;
+    text-align: left;
+    margin-bottom: 10px;
+}
+
+.divider {
+    width: 85%;
+    margin: auto;
+    margin-top: 1%;
+    height: 10px;
+    border-width: 5px;
+    color: rgb(0, 0, 0);
+}
