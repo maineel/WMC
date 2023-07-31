@@ -17,3 +17,6 @@ ratings
 adults
 checkInDate
 checkOutDate
+roomQuantity
+boardType
+currency

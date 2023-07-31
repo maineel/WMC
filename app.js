@@ -1,15 +1,29 @@
 const express =require("express");
 const bodyPraser =require("body-parser");
 const request=require("request");
-const encrypt=require("mongoose-encryption");
+const session=require('express-session');
+const passport=require('passport');
+const passportLocalMongoose=require('passport-local-mongoose');
 const https=require("https");
 const app=express();
 
 app.set("view engine","ejs");
 const mongoose=require("mongoose");
 const { METHODS } = require("http");
+app.use(express.static(__dirname));
+app.use(bodyPraser.urlencoded({extended:true}));
+  
+app.use(session({
+    secret:"We are the beasts of the wizarding world.",
+    resave:false,
+    saveUninitialized:false
+}))
+
+app.use(passport.initialize());
+app.use(passport.session());
 
 mongoose.connect("mongodb://127.0.0.1/WMC",{useNewUrlParser:true});
+//mongoose.set("useCreateIndex",true);
 
 const controlSchema=new mongoose.Schema({
     fName:String,
@@ -22,17 +36,22 @@ const controlSchema=new mongoose.Schema({
 const Control=mongoose.model("Control",controlSchema);
 
 const userSchema=new mongoose.Schema({
-    fName:String,
-    lName:String,
-    email:String,
+    username:String,
     password:String,
-    phone_number:Number
 })
+
+userSchema.plugin(passportLocalMongoose);
 
 const User=mongoose.model("User",userSchema);
 
-const secret="WelcomeToTheWorldOfHarryPotter";
-userSchema.plugin(encrypt,{secret: secret, encryptedFields:["password"]});
+passport.use(User.createStrategy());
+passport.serializeUser(function(user, done) {
+    done(null, user);
+  });
+  
+  passport.deserializeUser(function(user, done) {
+    done(null, user);
+  });
 
 const placesSchema=new mongoose.Schema({
     img_name:String,
@@ -44,8 +63,6 @@ const placesSchema=new mongoose.Schema({
 
 const Place=mongoose.model("Place",placesSchema);
 
-app.use(express.static(__dirname));
-app.use(bodyPraser.urlencoded({extended:true}));
 
 app.get("/sign_up_page",function(req,res){
     res.sendFile("C:/Users/gujar/Desktop/WMC/sign_up_index.html");
@@ -54,7 +71,7 @@ app.get("/sign_up_page",function(req,res){
 
 app.post("/sign_up_page",async function(req,res)
 {
-    if(req.body.fname!='' && req.body.lname!='' && req.body.email!='' && req.body.password!='' && req.body.phone_number!='')
+    /*if(req.body.fname!='' && req.body.lname!='' && req.body.email!='' && req.body.password!='' && req.body.phone_number!='')
     {
         const x=await User.findOne({email:req.body.email});
         console.log(x);
@@ -81,7 +98,22 @@ app.post("/sign_up_page",async function(req,res)
     else
     {
         console.log("Please enter value for all the fields");
-    }
+    }*/
+    User.register({username:req.body.username},req.body.password,function(err,user){
+        if(err)
+        {
+            console.log(err);
+        }
+        else
+        {
+            if(user)
+            {
+                passport.authenticate("local")(req,res,function(){
+                    res.redirect("/");
+                });
+            }
+        }
+    });
 });
 
 app.get("/login_page", function(req,res){
@@ -91,10 +123,10 @@ app.get("/login_page", function(req,res){
 app.post("/login_page",async function(req,res)
 {
 
-    var form_email=req.body.email;
+    /*var form_email=req.body.email;
     var form_password=req.body.password;
 
-    const x=await Control.find({email:form_email});
+    const x=await User.find({email:form_email});
     console.log();
 
     if(x[0]===undefined)
@@ -112,11 +144,35 @@ app.post("/login_page",async function(req,res)
         {
             console.log("Please enter a valid password");
         }
-    }
+    }*/
+    const user=new User({
+        username:req.body.username,
+        password:req.body.password
+    });
+    req.login(user,function(err){
+        if(err){
+            console.log(err);
+        }
+        else
+        {
+            if(user)
+            {
+                passport.authenticate("local")(req,res,function(){
+                    res.redirect("/");
+                });
+            }
+        }
+    });
 });
 
 app.get("/",function(req,res){
-    res.sendFile("C:/Users/gujar/Desktop/WMC/landing_index.html");
+    if(req.isAuthenticated()){
+        res.render("landing_index");
+    }
+    else
+    {
+        res.redirect("/login_page");
+    }
 });
 
 var places_v1;
@@ -274,7 +330,7 @@ app.get("/flight_details",async function(req,res)
     }
     else
     {
-        url=url+"&max=4";
+        url=url+"&max=7";
     }
     const options = {
         headers: {
