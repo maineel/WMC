@@ -15,6 +15,7 @@
 </head>
 
 <body class="body">
+    <form method="post" action="/flight_details">
     <div class="top-heading">
         <h1><u>Flight Search Results!</u></h1>
     </div>
@@ -48,9 +49,10 @@
                     <a class="dropdown-item" href="#">Stops: <%= element.stops %></a>
                     <a class="dropdown-item" href="#">Departure Terminal: <%= element.departure_terminal %></a>
                     <a class="dropdown-item" href="#">Arrival Terminal: <%= element.arrival_terminal %></a>
+                    <a class="dropdown-item" href="#">ID: <%= element.id %></a>
                 </div>
             </div>
-            <button type="button" class="btn btn-warning"><a href="ticket_details.html" target="_blank" style="text-decoration: none; color: black;">Book</a></button>
+                <button type="submit" name="id" value="<%= element.id %>" class="btn btn-warning" style="text-decoration: none; color: black;">Book</button>
         </div>
     </div>
     <% }); %>
@@ -63,6 +65,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
         integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
+    </form>
 </body>
 
 </html>

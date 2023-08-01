@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="CodePel">
+    <title> Airline Booking</title>
+    <link rel="stylesheet" href="public/styles/ticket_details.css">
+</head>
+
+<body class="cd__main">
+    <main>
+        <div class="booking-form-w3layouts">
+            <form action="#" method="post">
+                <% for (let i = 1; i <= adults; i++) { %>
+                    <h3 class="sub-heading-agileits">Adult <%=i%></h3>
+                    <div class="main-flex-w3ls-sectns">
+                        <div class="field-agileinfo-spc form-w3-agile-text1">
+                            <input id="full-name" type="text" name="Name" placeholder="Full Name" required="">
+                        </div>
+                        <div class="field-agileinfo-spc form-w3-agile-text2">
+                            <input id="number" type="text" name="Phone no" placeholder="Phone Number" required="">
+                        </div>
+                    </div>
+                    <div class="field-agileinfo-spc form-w3-agile-text">
+                        <input id="email" type="email" name="Email" placeholder="Email" required="">
+                    </div>
+                <% }; %>
+                <% for (let i = 1; i <= children; i++) { %>
+                    <h3 class="sub-heading-agileits">Children <%=i%></h3>
+                    <div class="main-flex-w3ls-sectns">
+                        <div class="field-agileinfo-spc form-w3-agile-text1">
+                            <input id="full-name" type="text" name="Name" placeholder="Full Name" required="">
+                        </div>
+                        <div class="field-agileinfo-spc form-w3-agile-text2">
+                            <input id="number" type="text" name="Phone no" placeholder="Phone Number" required="">
+                        </div>
+                    </div>
+                    <div class="field-agileinfo-spc form-w3-agile-text">
+                        <input id="email" type="email" name="Email" placeholder="Email" required="">
+                    </div>
+                <% }; %>
+                <% for (let i = 1; i <= infants; i++) { %>
+                    <h3 class="sub-heading-agileits">Infant <%=i%></h3>
+                    <div class="main-flex-w3ls-sectns">
+                        <div class="field-agileinfo-spc form-w3-agile-text1">
+                            <input id="full-name" type="text" name="Name" placeholder="Full Name" required="">
+                        </div>
+                        <div class="field-agileinfo-spc form-w3-agile-text2">
+                            <input id="number" type="text" name="Phone no" placeholder="Phone Number" required="">
+                        </div>
+                    </div>
+                    <div class="field-agileinfo-spc form-w3-agile-text">
+                        <input id="email" type="email" name="Email" placeholder="Email" required="">
+                    </div>
+                <% }; %>
+                    <div class="clear"></div>
+                    <input type="submit" value="Submit">
+                    <input type="reset" value="Clear Form">
+                    <div class="clear"></div>
+            </form>
+        </div>
+    </main>
+    <script src="./scripts/ticket_details.js"></script>
+</body>
+
+</html>
