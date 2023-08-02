@@ -127,10 +127,11 @@ body .form-outline {
     text-align: center;
 }
 
-.form-outline{
-    width:40%;
-    margin:auto;
+.form-outline {
+    width: 40%;
+    margin: auto;
 }
+
 /* 
 
 .rating {
@@ -170,7 +171,6 @@ body .form-outline {
 .rating:not(:checked)>label:hover~label:before {
     color: #f9df4a;
 } */
-
 
 .footer {
     height: 420px;

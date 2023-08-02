@@ -147,7 +147,7 @@ body {
 .main .card table {
     border: none;
     font-size: 16px;
-    height: 270px;
+    height: auto;
     width: 80%;
 }
 
