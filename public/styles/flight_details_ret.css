@@ -38,12 +38,12 @@ body {
     margin: auto;
     width: fit-content;
     padding: 10px;
-    height: auto;
+    height: 150px;
     margin: auto;
-    margin-bottom: 1%;
+    margin-bottom: 30px;
     margin-top: 1%;
-    display: flex;
     justify-content: center;
+    display: flex;
 }
 
 .airline-details {
@@ -57,13 +57,12 @@ body {
 .depart {
     font-family: 'Roboto Mono', monospace;
     text-align: center;
-    margin-right: 30%;
+    margin-right: 10%;
 }
 
 .middle {
-    margin-top: 15%;
     justify-content: center;
-    display: inline-block;
+    display: flex;
     align-items: center;
 }
 
@@ -80,7 +79,7 @@ body {
     font-size: 1.5rem;
     text-align: center;
     align-items: center;
-    margin-left: 30%;
+    margin-left: 10%;
 }
 
 .btn-group {

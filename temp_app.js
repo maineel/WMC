@@ -35,18 +35,9 @@ const controlSchema = new mongoose.Schema({
 
 const Control = mongoose.model("Control", controlSchema);
 
-const flightSchema = new mongoose.Schema({
-    username:String,
-    flight_details:Object,
-    ticket_details:Object
-})
-
-const Flight = mongoose.model("Flight", flightSchema);
-
 const userSchema = new mongoose.Schema({
     username: String,
     password: String,
-    name:String
 })
 
 userSchema.plugin(passportLocalMongoose);
@@ -71,6 +62,7 @@ const placesSchema = new mongoose.Schema({
 })
 
 const Place = mongoose.model("Place", placesSchema);
+
 
 app.get("/sign_up_page", function (req, res) {
     res.render("sign_up_index");
@@ -106,7 +98,7 @@ app.post("/sign_up_page", async function (req, res) {
     {
         console.log("Please enter value for all the fields");
     }*/
-    User.register({ username: req.body.username, name:req.body.name }, req.body.password, function (err, user) {
+    User.register({ username: req.body.username }, req.body.password, function (err, user) {
         if (err) {
             console.log(err);
         }
@@ -124,7 +116,6 @@ app.get("/login_page", function (req, res) {
     res.render("login_index");
 });
 
-var logged_in_user;
 app.post("/login_page", async function (req, res) {
 
     /*var form_email=req.body.email;
@@ -160,8 +151,6 @@ app.post("/login_page", async function (req, res) {
         else {
             if (user) {
                 passport.authenticate("local")(req, res, function () {
-                    logged_in_user=req.user.username;
-                    console.log(logged_in_user);
                     res.redirect("/");
                 });
             }
@@ -182,20 +171,6 @@ var places_v1;
 app.get("/places", async function (req, res) {
     places_v1 = await Place.find({});
     await res.render("places_index", { places: places_v1 });
-});
-
-app.post("/places",async function(req,res){
-    var str=req.body.search_btn;
-    var str1=str.substring(0, str.indexOf(' ')); 
-    var str2=str.substring(str.indexOf(' ') + 1);
-    var str3=str1.substring(0,1);
-    var str4=str1.substring(1,str1.length);
-    var str5=str2.substring(0,1);
-    var str6=str2.substring(1,str2.length);
-    var place_name=str3.toUpperCase()+str4.toLowerCase()+" "+str5.toUpperCase()+str6.toLowerCase();
-    places_v1 = await Place.find({heading:place_name});
-    await res.render("places_index", { places: places_v1 });
-    console.log(place_name);
 });
 
 app.get("/add_places", function (req, res) {
@@ -351,32 +326,34 @@ app.get("/flight_details", async function (req, res) {
             //console.log(flight_details.data[0]);
             if (response.statusCode === 200) {
                 count = flight_details.meta.count;
-                if (count != 0) {
-                    for (let i = 0; i < count; i++) {
-                        id = i;
-                        bookableSeats = flight_details.data[i].numberOfBookableSeats;
-                        stops = flight_details.data[i].itineraries[0].segments[0].numberOfStops;
-                        duration = flight_details.data[i].itineraries[0].duration;
-                        departure_code = flight_details.data[i].itineraries[0].segments[0].departure.iataCode;
-                        departure_time = flight_details.data[i].itineraries[0].segments[0].departure.at;
-                        departure_terminal = flight_details.data[i].itineraries[0].segments[0].departure.terminal;
-                        arrival_code = flight_details.data[i].itineraries[0].segments[0].arrival.iataCode;
-                        arrival_time = flight_details.data[i].itineraries[0].segments[0].arrival.at;
-                        arrival_terminal = flight_details.data[i].itineraries[0].segments[0].arrival.terminal;
-                        carrier_code = flight_details.data[i].itineraries[0].segments[0].carrierCode;
-                        total = flight_details.data[i].price.grandTotal;
-                        data_currency = flight_details.data[i].price.currency;
-                        additional_services = flight_details.data[i].price.additionalServices;
-                        if (isValidDate(arrival_date)) {
-                            return_stops = flight_details.data[i].itineraries[1].segments[0].numberOfStops;
-                            return_duration = flight_details.data[i].itineraries[1].duration;
-                            return_departure_code = flight_details.data[i].itineraries[1].segments[0].departure.iataCode;
-                            return_departure_time = flight_details.data[i].itineraries[1].segments[0].departure.at;
-                            return_departure_terminal = flight_details.data[i].itineraries[1].segments[0].departure.terminal;
-                            return_arrival_code = flight_details.data[i].itineraries[1].segments[0].arrival.iataCode;
-                            return_arrival_time = flight_details.data[i].itineraries[1].segments[0].arrival.at;
-                            return_arrival_terminal = flight_details.data[i].itineraries[1].segments[0].arrival.terminal;
-                            return_carrier_code = flight_details.data[i].itineraries[1].segments[0].carrierCode;
+                if (count != 0) 
+                {
+                    if(isValidDate(arrival_date))
+                    {
+                        for (let i = 0; i < count; i++) {
+                            id = i;
+                            bookableSeats = flight_details.data[i].numberOfBookableSeats;
+                            stops = flight_details.data[i].itineraries[0].segments[0].numberOfStops;
+                            duration = flight_details.data[i].itineraries[0].duration;
+                            departure_code = flight_details.datas[i].itineraries[0].segments[0].departure.iataCode;
+                            departure_time = flight_details.data[i].itineraries[0].segments[0].departure.at;
+                            departure_terminal = flight_details.data[i].itineraries[0].segments[0].departure.terminal;
+                            arrival_code = flight_details.data[i].itineraries[0].segments[0].arrival.iataCode;
+                            arrival_time = flight_details.data[i].itineraries[0].segments[0].arrival.at;
+                            arrival_terminal = flight_details.data[i].itineraries[0].segments[0].arrival.terminal;
+                            carrier_code = flight_details.data[i].itineraries[0].segments[0].carrierCode;
+                            total = flight_details.data[i].price.grandTotal;
+                            data_currency = flight_details.data[i].price.currency;
+                            additional_services = flight_details.data[i].price.additionalServices;
+                                return_stops = flight_details.data[i].itineraries[1].segments[0].numberOfStops;
+                                return_duration = flight_details.data[i].itineraries[1].duration;
+                                return_departure_code = flight_details.data[i].itineraries[1].segments[0].departure.iataCode;
+                                return_departure_time = flight_details.data[i].itineraries[1].segments[0].departure.at;
+                                return_departure_terminal = flight_details.data[i].itineraries[1].segments[0].departure.terminal;
+                                return_arrival_code = flight_details.data[i].itineraries[1].segments[0].arrival.iataCode;
+                                return_arrival_time = flight_details.data[i].itineraries[1].segments[0].arrival.at;
+                                return_arrival_terminal = flight_details.data[i].itineraries[1].segments[0].arrival.terminal;
+                                return_carrier_code = flight_details.data[i].itineraries[1].segments[0].carrierCode;
                             var flight = {
                                 id: id,
                                 bookableSeats: bookableSeats,
@@ -395,16 +372,43 @@ app.get("/flight_details", async function (req, res) {
                                 return_stops:return_stops,
                                 return_duration:return_duration,
                                 return_departure_code:return_departure_code,
-                                return_departure_time:return_departure_time,
                                 return_departure_terminal:return_departure_terminal,
-                                return_carrier_code:return_carrier_code,
+                                return_departure_time:return_departure_time,
                                 return_arrival_code:return_arrival_code,
                                 return_arrival_time:return_arrival_time,
-                                return_arrival_terminal:return_arrival_terminal
+                                return_arrival_terminal:return_arrival_terminal,
+                                return_carrier_code:return_carrier_code
                             };
+                            flights[i] = flight;
                         }
-                        else
-                        {
+                        res.render("flight_details_ret", { flights: flights });
+                    }
+                    else
+                    {   
+                        for (let i = 0; i < count; i++) {
+                            id = i;
+                            bookableSeats = flight_details.data[i].numberOfBookableSeats;
+                            stops = flight_details.data[i].itineraries[0].segments[0].numberOfStops;
+                            duration = flight_details.data[i].itineraries[0].duration;
+                            departure_code = flight_details.data[i].itineraries[0].segments[0].departure.iataCode;
+                            departure_time = flight_details.data[i].itineraries[0].segments[0].departure.at;
+                            departure_terminal = flight_details.data[i].itineraries[0].segments[0].departure.terminal;
+                            arrival_code = flight_details.data[i].itineraries[0].segments[0].arrival.iataCode;
+                            arrival_time = flight_details.data[i].itineraries[0].segments[0].arrival.at;
+                            arrival_terminal = flight_details.data[i].itineraries[0].segments[0].arrival.terminal;
+                            carrier_code = flight_details.data[i].itineraries[0].segments[0].carrierCode;
+                            total = flight_details.data[i].price.grandTotal;
+                            data_currency = flight_details.data[i].price.currency;
+                            additional_services = flight_details.data[i].price.additionalServices;
+                                return_stops = flight_details.data[i].itineraries[1].segments[0].numberOfStops;
+                                return_duration = flight_details.data[i].itineraries[1].duration;
+                                return_departure_code = flight_details.data[i].itineraries[1].segments[0].departure.iataCode;
+                                return_departure_time = flight_details.data[i].itineraries[1].segments[0].departure.at;
+                                return_departure_terminal = flight_details.data[i].itineraries[1].segments[0].departure.terminal;
+                                return_arrival_code = flight_details.data[i].itineraries[1].segments[0].arrival.iataCode;
+                                return_arrival_time = flight_details.data[i].itineraries[1].segments[0].arrival.at;
+                                return_arrival_terminal = flight_details.data[i].itineraries[1].segments[0].arrival.terminal;
+                                return_carrier_code = flight_details.data[i].itineraries[1].segments[0].carrierCode;
                             var flight = {
                                 id: id,
                                 bookableSeats: bookableSeats,
@@ -421,15 +425,8 @@ app.get("/flight_details", async function (req, res) {
                                 data_currency: data_currency,
                                 additional_services: additional_services
                             };
+                            flights[i] = flight;
                         }
-                        flights[i] = flight;
-                    }
-                    if(isValidDate(arrival_date))
-                    {
-                        res.render("flight_details_ret", { flights: flights });
-                    }
-                    else
-                    {
                         res.render("flight_details", { flights: flights });
                     }
                 }
@@ -445,7 +442,7 @@ var flight_no;
 app.post("/flight_details",function (req,res) {
     flight_no=req.body.id;
     res.redirect("/ticket_details");
-});
+})
 
 
 app.get("/ticket_details", function (req, res) {
@@ -456,35 +453,8 @@ app.get("/ticket_details", function (req, res) {
     else {
         res.redirect("/login_page");
     }
-});
+})
 
-var ticket_detail;
-app.post("/ticket_details",function(req,res){
-    ticket_detail={
-        name_details:req.body.Name,
-        email_details:req.body.Email,
-        phoneno_details:req.body.Phoneno
-    };
-    res.redirect("/payment");
-});
-
-app.get("/payment",function(req,res){
-    res.render("payment");
-});
-
-app.post("/payment",function(req,res){
-    flight = new Flight({
-        username:logged_in_user,
-        flight_details:flights[flight_no],
-        ticket_details:ticket_detail
-    })
-    flight.save().then(function (doc) {
-        console.log(doc._id.toString());
-    }).catch(function (error) {
-        console.log(error);
-    });
-    res.redirect("/");
-});
 
 app.listen(3000, function () {
     console.log("Server is running on port 3000")
