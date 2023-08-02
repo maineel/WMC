@@ -400,13 +400,16 @@ app.get("/flight_details", async function (req, res) {
                                 return_carrier_code:return_carrier_code,
                                 return_arrival_code:return_arrival_code,
                                 return_arrival_time:return_arrival_time,
-                                return_arrival_terminal:return_arrival_terminal
+                                return_arrival_terminal:return_arrival_terminal,
+                                departure_date:departure_date,
+                                airline_class:airline_class
                             };
                         }
                         else
                         {
                             var flight = {
                                 id: id,
+                                departure_date:departure_date,
                                 bookableSeats: bookableSeats,
                                 stops: stops,
                                 duration: duration,
@@ -419,7 +422,8 @@ app.get("/flight_details", async function (req, res) {
                                 carrier_code: carrier_code,
                                 total: total,
                                 data_currency: data_currency,
-                                additional_services: additional_services
+                                additional_services: additional_services,
+                                airline_class:airline_class
                             };
                         }
                         flights[i] = flight;
@@ -485,6 +489,12 @@ app.post("/payment",function(req,res){
     });
     res.redirect("/");
 });
+
+app.get("/download_ticket",async function(req,res){
+    var flights=await Flight.find({username : "kevaljuthani99@gmail.com" });
+    //console.log(flights);
+    res.render("ticket",{flights: flights});
+})
 
 app.listen(3000, function () {
     console.log("Server is running on port 3000")
