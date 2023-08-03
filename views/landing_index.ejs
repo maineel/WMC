@@ -124,20 +124,19 @@
       <div class="container">
         <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
           <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-            <li><a href="#" class="nav-link px-2 text-white">Home</a></li>
-            <li><a href="#" class="nav-link px-2 text-white">Features</a></li>
-            <li><a href="#" class="nav-link px-2 text-white">Pricing</a></li>
-            <li><a href="#" class="nav-link px-2 text-white">FAQs</a></li>
-            <li><a href="#" class="nav-link px-2 text-white">About</a></li>
+            <li><a href="/" class="nav-link px-2 text-white">Home</a></li>
+            <li><a href="/places" class="nav-link px-2 text-white">Places</a></li>
+            <li><a href="/flight_book" class="nav-link px-2 text-white">Flights</a></li>
+            <li><a href="/profile" class="nav-link px-2 text-white">Profile</a></li>
           </ul>
 
-          <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
-            <input type="search" class="form-control form-control-dark" placeholder="Search..." aria-label="Search">
+          <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search" method="post" action="/">
+            <input type="search" class="form-control form-control-dark" placeholder="Search..." aria-label="Search" name="search_btn">
           </form>
 
           <div class="text-end">
-            <a href="login_index.html"><button type="button" class="btn btn-outline-light me-2">Login</button></a>
-            <a href="sign_up_index.html"><button type="button" class="btn btn-warning">Sign-up</button></a>
+            <a href="/login_page"><button type="button" class="btn btn-outline-light me-2">Login</button></a>
+            <a href="/sign_up_page"><button type="button" class="btn btn-warning">Sign-up</button></a>
           </div>
         </div>
       </div>
@@ -176,7 +175,7 @@
             </div>
           </div>
           <div class="explore-more">
-            <a href="./places_index.html"  class="btn explore-morebtn btn-warning explore-more" target="_blank"><b>Explore More</b></a>
+            <a href="/places"  class="btn explore-morebtn btn-warning explore-more" target="_blank"><b>Explore More</b></a>
           </div>
         </div>
       </div>

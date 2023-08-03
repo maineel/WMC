@@ -20,3 +20,13 @@ checkOutDate
 roomQuantity
 boardType
 currency
+
+
+
+
+images displayed on home page dont have link
+without login signup display of home page
+
+explore button link in places page
+
+return flights display

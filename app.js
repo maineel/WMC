@@ -106,7 +106,7 @@ app.post("/sign_up_page", async function (req, res) {
     {
         console.log("Please enter value for all the fields");
     }*/
-    User.register({ username: req.body.username, name:req.body.name }, req.body.password, function (err, user) {
+    User.register({ username: req.body.username}, req.body.password, function (err, user) {
         if (err) {
             console.log(err);
         }
@@ -170,12 +170,20 @@ app.post("/login_page", async function (req, res) {
 });
 
 app.get("/", function (req, res) {
-    if (req.isAuthenticated()) {
         res.render("landing_index");
-    }
-    else {
-        res.redirect("/login_page");
-    }
+});
+
+app.post("/",async function(req,res){
+    var str=req.body.search_btn;
+    var str1=str.substring(0, str.indexOf(' ')); 
+    var str2=str.substring(str.indexOf(' ') + 1);
+    var str3=str1.substring(0,1);
+    var str4=str1.substring(1,str1.length);
+    var str5=str2.substring(0,1);
+    var str6=str2.substring(1,str2.length);
+    var place_name=str3.toUpperCase()+str4.toLowerCase()+" "+str5.toUpperCase()+str6.toLowerCase();
+    places_v1 = await Place.find({heading:place_name});
+    await res.render("places_index", { places: places_v1 });
 });
 
 var places_v1;
@@ -494,7 +502,50 @@ app.get("/download_ticket",async function(req,res){
     var flights=await Flight.find({username : "kevaljuthani99@gmail.com" });
     //console.log(flights);
     res.render("ticket",{flights: flights});
-})
+});
+
+app.get("/profile",async function(req,res){
+    if (req.isAuthenticated()) {
+        console.log(req.user.username);
+        res.render("profile",{username:logged_in_user});
+    }
+    else {
+        res.redirect("/login_page");
+    }
+});
+
+app.get("/shell_cottage",function(req,res){
+    res.render("shell_cottage");
+});
+
+app.get("/alnwick_castle",function(req,res){
+    res.render("alnwick_castle");
+});
+
+app.get("/balmoral_hotel",function(req,res){
+    res.render("balmoral_hotel");
+});
+
+app.get("/black_rock",function(req,res){
+    res.render("black_rock");
+});
+
+app.get("/godrics_hollow",function(req,res){
+    res.render("godrics_hollow");
+});
+
+app.get("/jacobite",function(req,res){
+    res.render("jacobite");
+});
+
+app.get("/kings_cross",function(req,res){
+    res.render("kings_cross");
+});
+
+app.get("/loch_sheil",function(req,res){
+    res.render("loch_sheil");
+});
+
 
 app.listen(3000, function () {
     console.log("Server is running on port 3000")
