@@ -28,5 +28,12 @@ images displayed on home page dont have link
 without login signup display of home page
 
 explore button link in places page
+search button removal in each places page and nav bar editing 
 
 return flights display
+
+rating and reviews
+
+alnwick_castle to balmoral_hotel :1 hr
+
+shell cottage , the burrow , malfoy manor,
