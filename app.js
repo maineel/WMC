@@ -69,7 +69,8 @@ const placesSchema = new mongoose.Schema({
     heading: String,
     description: String,
     card_title: String,
-    img_class: String
+    img_class: String,
+    explore_path:String
 })
 
 const Place = mongoose.model("Place", placesSchema);
@@ -174,7 +175,13 @@ app.post("/login_page", async function (req, res) {
 });
 
 app.get("/", function (req, res) {
-        res.render("landing_index");
+        if (req.isAuthenticated()) {
+            console.log(req.user.username);
+            res.render("landing_index2");
+        }
+        else {
+            res.render("landing_index");
+        }
 });
 
 app.post("/",async function(req,res){
@@ -215,7 +222,7 @@ app.get("/add_places", function (req, res) {
 });
 
 app.post("/add_places", async function (req, res) {
-    if (req.body.img_name != '' && req.body.heading != '' && req.body.description != '' && req.body.card_title != '' && req.body.img_class != '') {
+    if (req.body.img_name != '' && req.body.heading != '' && req.body.explore_path!="" && req.body.description != '' && req.body.card_title != '' && req.body.img_class != '') {
         const x = await Place.find({ heading: req.body.heading });
 
         if (x[0] === undefined) {
@@ -224,7 +231,8 @@ app.post("/add_places", async function (req, res) {
                 heading: req.body.heading,
                 description: req.body.description,
                 card_title: req.body.card_title,
-                img_class: req.body.img_class
+                img_class: req.body.img_class,
+                explore_path:req.body.explore_path
             })
             place.save().then(function (doc) {
                 console.log(doc._id.toString());
