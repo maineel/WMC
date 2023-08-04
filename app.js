@@ -46,7 +46,9 @@ const Flight = mongoose.model("Flight", flightSchema);
 const userSchema = new mongoose.Schema({
     username: String,
     password: String,
-    name:String
+    name:String,
+    age:String,
+    number:Number
 })
 
 userSchema.plugin(passportLocalMongoose);
@@ -106,7 +108,7 @@ app.post("/sign_up_page", async function (req, res) {
     {
         console.log("Please enter value for all the fields");
     }*/
-    User.register({ username: req.body.username}, req.body.password, function (err, user) {
+    User.register({ username: req.body.username,name:req.body.fullname,age:req.body.age,number:req.body.number}, req.body.password, function (err, user) {
         if (err) {
             console.log(err);
         }
@@ -124,7 +126,7 @@ app.get("/login_page", function (req, res) {
     res.render("login_index");
 });
 
-var logged_in_user;
+var logged_in_username,logged_in_name,logged_in_number,logged_in_age;
 app.post("/login_page", async function (req, res) {
 
     /*var form_email=req.body.email;
@@ -160,8 +162,10 @@ app.post("/login_page", async function (req, res) {
         else {
             if (user) {
                 passport.authenticate("local")(req, res, function () {
-                    logged_in_user=req.user.username;
-                    console.log(logged_in_user);
+                    logged_in_username=req.user.username;
+                    logged_in_name=req.user.name;
+                    logged_in_age=req.user.age;
+                    logged_in_number=req.user.number;
                     res.redirect("/");
                 });
             }
@@ -499,15 +503,24 @@ app.post("/payment",function(req,res){
 });
 
 app.get("/download_ticket",async function(req,res){
-    var flights=await Flight.find({username : "kevaljuthani99@gmail.com" });
+    var flights=await Flight.find({username :logged_in_username  });
     //console.log(flights);
-    res.render("ticket",{flights: flights});
+        res.render("ticket",{flights: flights});
+    
 });
 
 app.get("/profile",async function(req,res){
     if (req.isAuthenticated()) {
+        var flights=await Flight.find({username :logged_in_username  });
         console.log(req.user.username);
-        res.render("profile",{username:logged_in_user});
+        if(flights.length==0)
+        {
+            res.render("profile2",{username:logged_in_username,name:logged_in_name,number:logged_in_number,age:logged_in_age})
+        }
+        else
+        {
+            res.render("profile",{username:logged_in_username,name:logged_in_name,number:logged_in_number,age:logged_in_age});
+        }
     }
     else {
         res.redirect("/login_page");
