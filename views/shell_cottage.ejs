@@ -96,23 +96,6 @@
             width="90%" height="450" style="border: 1px solid black;;" allowfullscreen="" loading="lazy"
             referrerpolicy="no-referrer-when-downgrade"></iframe>
     </div>
-
-    <!-- <div class="rating"> 
-            <input type="radio" id="star1" name="rating" value="1" />
-            <label for="star1"></label> 
-            <input type="radio" id="star2" name="rating" value="2" />
-            <label for="star2"></label> 
-            <input type="radio" id="star3" name="rating" value="3" />
-            <label for="star3"></label> 
-            <input type="radio" id="star4" name="rating" value="4" />
-            <label for="star4"></label> 
-            <input type="radio" id="star5" name="rating" value="5" />
-            <label for="star5"></label> 
-        </div> -->
-        
-    <div class="form-outline">
-        <textarea class="form-control" id="review" rows="10" placeholder="Write your review here!"></textarea>    
-    </div>
     
     <div class="content-hotel">
         <p class="title"><u>Hotel's Near Shell cottage</u></p>
@@ -207,7 +190,38 @@
         </div>
     </div>
 </body>
-
+<br>
+        <div class="rating_container">
+          <h1>Rating and Review</h1>
+          <form method="post" action="/shell_cottage">
+            <div class="rating-stars">
+                <input type="radio" name="rating" id="star5" value=5 required>
+                <label class="rating-star-label" for="star5">&#9733;</label>
+                <input type="radio" name="rating" id="star4" value=4 required> 
+                <label class="rating-star-label" for="star4">&#9733;</label>
+                <input type="radio" name="rating" id="star3" value=3 required>
+                <label class="rating-star-label" for="star3">&#9733;</label>
+                <input type="radio" name="rating" id="star2" value=2 required>
+                <label class="rating-star-label" for="star2">&#9733;</label>
+                <input type="radio" name="rating" id="star1" value=1 required>
+                <label class="rating-star-label" for="star1">&#9733;</label>
+            </div>
+            <textarea class="review-input" placeholder="Write your review..." name="text_review" required></textarea>
+            <button class="submit-button">Submit</button>
+        </form>
+        <% review_details.forEach(function(element) { %>
+            <div class="reviews">
+                <div class="review">
+                <div class="rating-stars2">
+                    <% for (let i = 0; i < element.rating; i++) { %>
+                        <label class="rating-star-label golden">&#9733;</label>
+                    <% } %>
+                </div>
+                <p><%= element.review %></p>
+                </div>
+          </div>
+        <% }); %>
+        </div>
 <footer class="footer">
     <div class="footer1">
         <div class="contact">

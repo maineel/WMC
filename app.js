@@ -43,6 +43,14 @@ const flightSchema = new mongoose.Schema({
 
 const Flight = mongoose.model("Flight", flightSchema);
 
+const reviewSchema = new mongoose.Schema({
+    place:String,
+    rating:Number,
+    review:String
+})
+
+const Review = mongoose.model("Review", reviewSchema);
+
 const userSchema = new mongoose.Schema({
     username: String,
     password: String,
@@ -535,38 +543,166 @@ app.get("/profile",async function(req,res){
     }
 });
 
-app.get("/shell_cottage",function(req,res){
-    res.render("shell_cottage");
+app.get("/shell_cottage",async function(req,res){
+    var review_details=await Review.find({place :"Shell_Cottage" });
+    res.render("shell_cottage",{review_details:review_details});
 });
 
-app.get("/alnwick_castle",function(req,res){
-    res.render("alnwick_castle");
+app.post("/shell_cottage", async function(req,res){
+        var review_details = new Review({
+            place:"Shell_Cottage",
+            rating:req.body.rating,
+            review:req.body.text_review
+        })
+        review_details.save().then(function (doc) {
+            console.log(doc._id.toString());
+        }).catch(function (error) {
+            console.log(error);
+        });
+        console.log(req.body.rating);
+    res.redirect("/shell_cottage");
 });
 
-app.get("/balmoral_hotel",function(req,res){
-    res.render("balmoral_hotel");
+app.get("/alnwick_castle",async function(req,res){
+    var review_details=await Review.find({place :"Alnwick_Castle" });
+    res.render("alnwick_castle",{review_details:review_details});
 });
 
-app.get("/black_rock",function(req,res){
-    res.render("black_rock");
+app.post("/alnwick_castle", async function(req,res){
+        var review_details = new Review({
+            place:"Alnwick_Castle",
+            rating:req.body.rating,
+            review:req.body.text_review
+        })
+        review_details.save().then(function (doc) {
+            console.log(doc._id.toString());
+        }).catch(function (error) {
+            console.log(error);
+        });
+        console.log(req.body.rating);
+    res.redirect("/alnwick_castle");
 });
 
-app.get("/godrics_hollow",function(req,res){
-    res.render("godrics_hollow");
+
+app.get("/balmoral_hotel",async function(req,res){
+    var review_details=await Review.find({place :"Balmoral_Hotel" });
+    res.render("balmoral_hotel",{review_details:review_details});
 });
 
-app.get("/jacobite",function(req,res){
-    res.render("jacobite");
+app.post("/balmoral_hotel", async function(req,res){
+        var review_details = new Review({
+            place:"Balmoral_Hotel",
+            rating:req.body.rating,
+            review:req.body.text_review
+        })
+        review_details.save().then(function (doc) {
+            console.log(doc._id.toString());
+        }).catch(function (error) {
+            console.log(error);
+        });
+        console.log(req.body.rating);
+    res.redirect("/balmoral_hotel");
 });
 
-app.get("/kings_cross",function(req,res){
-    res.render("kings_cross");
+app.get("/black_rock",async function(req,res){
+    var review_details=await Review.find({place :"Black_Rock" });
+    res.render("black_rock",{review_details:review_details});
 });
 
-app.get("/loch_sheil",function(req,res){
-    res.render("loch_sheil");
+app.post("/black_rock", async function(req,res){
+        var review_details = new Review({
+            place:"Black_Rock",
+            rating:req.body.rating,
+            review:req.body.text_review
+        })
+        review_details.save().then(function (doc) {
+            console.log(doc._id.toString());
+        }).catch(function (error) {
+            console.log(error);
+        });
+        console.log(req.body.rating);
+    res.redirect("/black_rock");
 });
 
+app.get("/godrics_hollow",async function(req,res){
+    var review_details=await Review.find({place :"Godrics_Hollow" });
+    res.render("godrics_hollow",{review_details:review_details});
+});
+
+app.post("/godrics_hollow", async function(req,res){
+        var review_details = new Review({
+            place:"Godrics_Hollow",
+            rating:req.body.rating,
+            review:req.body.text_review
+        })
+        review_details.save().then(function (doc) {
+            console.log(doc._id.toString());
+        }).catch(function (error) {
+            console.log(error);
+        });
+        console.log(req.body.rating);
+    res.redirect("/godrics_hollow");
+});
+
+app.get("/jacobite",async function(req,res){
+    var review_details=await Review.find({place :"Jacobite" });
+    res.render("jacobite",{review_details:review_details});
+});
+
+app.post("/jacobite", async function(req,res){
+        var review_details = new Review({
+            place:"Jacobite",
+            rating:req.body.rating,
+            review:req.body.text_review
+        })
+        review_details.save().then(function (doc) {
+            console.log(doc._id.toString());
+        }).catch(function (error) {
+            console.log(error);
+        });
+        console.log(req.body.rating);
+    res.redirect("/jacobite");
+});
+
+app.get("/kings_cross",async function(req,res){
+    var review_details=await Review.find({place :"Kings_Cross" });
+    res.render("kings_cross",{review_details:review_details});
+});
+
+app.post("/kings_cross", async function(req,res){
+        var review_details = new Review({
+            place:"Kings_Cross",
+            rating:req.body.rating,
+            review:req.body.text_review
+        })
+        review_details.save().then(function (doc) {
+            console.log(doc._id.toString());
+        }).catch(function (error) {
+            console.log(error);
+        });
+        console.log(req.body.rating);
+    res.redirect("/kings_cross");
+});
+
+app.get("/loch_sheil",async function(req,res){
+    var review_details=await Review.find({place :"Loch_Sheil" });
+    res.render("loch_sheil",{review_details:review_details});
+});
+
+app.post("/loch_sheil", async function(req,res){
+        var review_details = new Review({
+            place:"Loch_Sheil",
+            rating:req.body.rating,
+            review:req.body.text_review
+        })
+        review_details.save().then(function (doc) {
+            console.log(doc._id.toString());
+        }).catch(function (error) {
+            console.log(error);
+        });
+        console.log(req.body.rating);
+    res.redirect("/loch_sheil");
+});
 
 app.listen(3000, function () {
     console.log("Server is running on port 3000")

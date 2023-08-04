@@ -209,6 +209,38 @@
             </table>
         </div>
     </div>
+    <br>
+        <div class="rating_container">
+          <h1>Rating and Review</h1>
+          <form method="post" action="/kings_cross">
+            <div class="rating-stars">
+                <input type="radio" name="rating" id="star5" value=5 required>
+                <label class="rating-star-label" for="star5">&#9733;</label>
+                <input type="radio" name="rating" id="star4" value=4 required> 
+                <label class="rating-star-label" for="star4">&#9733;</label>
+                <input type="radio" name="rating" id="star3" value=3 required>
+                <label class="rating-star-label" for="star3">&#9733;</label>
+                <input type="radio" name="rating" id="star2" value=2 required>
+                <label class="rating-star-label" for="star2">&#9733;</label>
+                <input type="radio" name="rating" id="star1" value=1 required>
+                <label class="rating-star-label" for="star1">&#9733;</label>
+            </div>
+            <textarea class="review-input" placeholder="Write your review..." name="text_review" required></textarea>
+            <button class="submit-button">Submit</button>
+        </form>
+        <% review_details.forEach(function(element) { %>
+            <div class="reviews">
+                <div class="review">
+                <div class="rating-stars2">
+                    <% for (let i = 0; i < element.rating; i++) { %>
+                        <label class="rating-star-label golden">&#9733;</label>
+                    <% } %>
+                </div>
+                <p><%= element.review %></p>
+                </div>
+          </div>
+        <% }); %>
+        </div>
     <footer class="footer">
         <div class="footer1">
             <div class="contact">
