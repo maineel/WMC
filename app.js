@@ -289,7 +289,7 @@ app.post("/flight_book", function (req, res) {
 // Function to get the access token
 function getAccessToken(clientId, clientSecret) {
     return new Promise((resolve, reject) => {
-        const tokenEndpoint = 'https://test.api.amadeus.com/v1/security/oauth2/token';
+        const tokenEndpoint = process.env.API;
         const authString = `${clientId}:${clientSecret}`;
         const base64AuthString = Buffer.from(authString).toString('base64');
 
