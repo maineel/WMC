@@ -1,3 +1,4 @@
+require('dotenv').config("./.env");
 const express = require("express");
 const bodyPraser = require("body-parser");
 const request = require("request");
@@ -22,7 +23,7 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
-mongoose.connect("mongodb+srv://Keval_Juthani:Maxpayne99@cluster0.bae2k89.mongodb.net/WMC?retryWrites=true&w=majority");
+mongoose.connect(process.env.MONGODB_URL);
 //mongoose.set("useCreateIndex",true);
 
 const controlSchema = new mongoose.Schema({
@@ -232,7 +233,7 @@ app.post("/flight_book", function (req, res) {
 // Function to get the access token
 function getAccessToken(clientId, clientSecret) {
     return new Promise((resolve, reject) => {
-        const tokenEndpoint = 'https://test.api.amadeus.com/v1/security/oauth2/token';
+        const tokenEndpoint = process.env.API;
         const authString = `${clientId}:${clientSecret}`;
         const base64AuthString = Buffer.from(authString).toString('base64');
 
@@ -471,7 +472,7 @@ app.get("/download_ticket",async function(req,res){
 
 app.get("/profile",async function(req,res){
     if (req.isAuthenticated()) {
-        var flights=await Flight.find({username :logged_in_username  });
+         var flights=await Flight.find({username :logged_in_username  });
         console.log(req.user.username);
         if(flights.length==0)
         {

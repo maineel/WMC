@@ -111,6 +111,43 @@
 }
 
 
+.packages{
+  margin: auto;
+  /* margin-bottom: 2%; */
+  width: 75%;
+  padding-bottom:1% ;
+  background-color: rgba(20, 37, 43, 255);
+  opacity: 0.85;
+  color: white;
+  margin-bottom: 2%;
+  margin-top: 1%;
+}
+
+.package-card{
+  border-radius: 2%;
+  box-shadow: 5px 5px rgb(78, 78, 78);
+  padding: 10px;
+  height: auto;
+  margin: auto;
+  margin-bottom:2%;
+  width: 50%;
+  color: white;
+  border: 2px solid rgb(159, 148, 29);
+}
+
+.package-num{
+  display: inline;
+}
+
+.package-content{
+  margin-left: 1%;
+  padding: 1%;
+}
+
+.placees-covered{
+  margin-bottom: 0px;
+}
+
 .content-hotel {
     
     
