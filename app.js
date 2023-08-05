@@ -22,7 +22,7 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
-mongoose.connect("mongodb://127.0.0.1/WMC", { useNewUrlParser: true });
+mongoose.connect("mongodb+srv://Keval_Juthani:Maxpayne99@cluster0.bae2k89.mongodb.net/WMC?retryWrites=true&w=majority");
 //mongoose.set("useCreateIndex",true);
 
 const controlSchema = new mongoose.Schema({

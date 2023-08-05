@@ -26,12 +26,4 @@ currency
 
 images displayed on home page dont have link
 
-explore button link in places page
-
 return flights display
-
-rating and reviews
-
-alnwick_castle to balmoral_hotel :1 hr
-
-shell cottage , the burrow , malfoy manor,
