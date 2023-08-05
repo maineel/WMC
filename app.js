@@ -460,7 +460,15 @@ app.post("/payment",function(req,res){
     }).catch(function (error) {
         console.log(error);
     });
-    res.redirect("/");
+    res.redirect("success");
+});
+
+app.get("/package_payment",function(req,res){
+    res.render("package_payment");
+});
+
+app.post("/package_payment",function(req,res){
+    res.render("success");
 });
 
 app.get("/download_ticket",async function(req,res){

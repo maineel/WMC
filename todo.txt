@@ -23,7 +23,6 @@ currency
 
 
 
-packages rerouting
 
 return flights display
 
