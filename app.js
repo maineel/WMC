@@ -89,34 +89,6 @@ app.get("/sign_up_page", function (req, res) {
 
 
 app.post("/sign_up_page", async function (req, res) {
-    /*if(req.body.fname!='' && req.body.lname!='' && req.body.email!='' && req.body.password!='' && req.body.phone_number!='')
-    {
-        const x=await User.findOne({email:req.body.email});
-        console.log(x);
-        if(x!=null)
-        {
-            console.log("User aldready exists");
-        }
-        else
-        {
-            user = new User({
-                fName: req.body.fname,
-                lName: req.body.lname,
-                email: req.body.email,
-                password: req.body.password,
-                phone_number: req.body.phone_number
-            })
-            user.save().then(function (doc) {
-                console.log(doc._id.toString());
-            }).catch(function (error) {
-                console.log(error);
-            });
-        }
-    }
-    else
-    {
-        console.log("Please enter value for all the fields");
-    }*/
     User.register({ username: req.body.username,name:req.body.fullname,age:req.body.age,number:req.body.number}, req.body.password, function (err, user) {
         if (err) {
             console.log(err);
@@ -137,29 +109,6 @@ app.get("/login_page", function (req, res) {
 
 var logged_in_username,logged_in_name,logged_in_number,logged_in_age;
 app.post("/login_page", async function (req, res) {
-
-    /*var form_email=req.body.email;
-    var form_password=req.body.password;
-
-    const x=await User.find({email:form_email});
-    console.log();
-
-    if(x[0]===undefined)
-    {
-        console.log("Please enter a valid email");
-    }
-    else
-    {
-        var y=x[0].password;
-        if(form_password===y)
-        {
-            console.log("Succesfully logged in");
-        }
-        else
-        {
-            console.log("Please enter a valid password");
-        }
-    }*/
     const user = new User({
         username: req.body.username,
         password: req.body.password
@@ -261,7 +210,7 @@ app.post("/add_places", async function (req, res) {
 
 app.get("/flight_book", function (req, res) {
     res.render("flight_book");
-})
+});
 
 var from, to, airline_class, adults, infants, children, arrival_date, departure_date, nonstop, currency;
 
@@ -277,12 +226,7 @@ app.post("/flight_book", function (req, res) {
     nonstop = req.body.nonstop;
     currency = req.body.currency;
     res.redirect("/flight_details");
-    //console.log(from+" "+to+" "+infants+" "+children+" "+adults+" "+arrival_date+" "+departure_date+" "+nonstop+" "+currency+" "+airline_class);
-})
-
-/*app.get("/flight_details",async function(req,res){
-    await res.render("flight_details",{from:from,to:to,airline:airline,airline_class:airline_class,passengers:passengers,arrival_date:arrival_date,departure_date,departure_date});
-});*/
+});
 
 
 // Function to get the access token
