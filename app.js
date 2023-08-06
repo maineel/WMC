@@ -460,7 +460,7 @@ app.post("/payment",function(req,res){
     }).catch(function (error) {
         console.log(error);
     });
-    res.redirect("success");
+    res.render("success");
 });
 
 app.get("/package_payment",function(req,res){
