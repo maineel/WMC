@@ -23,7 +23,13 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
-mongoose.connect(process.env.MONGODB_URL);
+mongoose.connect('mongodb://localhost:27017/WMC',
+  {
+    useNewUrlParser: true,
+    useFindAndModify: false,
+    useUnifiedTopology: true
+  }
+);
 //mongoose.set("useCreateIndex",true);
 
 const controlSchema = new mongoose.Schema({
