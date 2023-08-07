@@ -88,7 +88,7 @@ app.get("/sign_up_page", function (req, res) {
     res.render("sign_up_index");
 });
 
-var logged_in_username;
+
 app.post("/sign_up_page", async function (req, res) {
     User.register({ username: req.body.username,name:req.body.fullname,age:req.body.age,number:req.body.number}, req.body.password, function (err, user) {
         if (err) {
@@ -97,7 +97,6 @@ app.post("/sign_up_page", async function (req, res) {
         else {
             if (user) {
                 passport.authenticate("local")(req, res, function () {
-                    logged_in_username=req.user.username;
                     res.redirect("/");
                 });
             }
@@ -109,7 +108,7 @@ app.get("/login_page", function (req, res) {
     res.render("login_index");
 });
 
-var logged_in_name,logged_in_number,logged_in_age;
+var logged_in_username,logged_in_name,logged_in_number,logged_in_age;
 app.post("/login_page", async function (req, res) {
     const user = new User({
         username: req.body.username,
