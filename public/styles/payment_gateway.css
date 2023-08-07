@@ -15,13 +15,12 @@
   align-items: center;
   padding:25px;
   min-height: 100vh;
-  background-color: grey;
 }
 
 .container form{
   padding:20px;
   width:700px;
-  background: #fff;
+  background: #8b9096;
   box-shadow: 0 5px 10px rgba(0,0,0,.1);
 }
 

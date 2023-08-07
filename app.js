@@ -214,7 +214,7 @@ app.get("/flight_book", function (req, res) {
     res.render("flight_book");
 });
 
-var from, to, airline_class, adults, infants, children, arrival_date, departure_date, nonstop, currency;
+var from, to, airline_class, adults, infants, children, departure_date, nonstop, currency;
 
 app.post("/flight_book", function (req, res) {
     from = req.body.from;
@@ -222,7 +222,6 @@ app.post("/flight_book", function (req, res) {
     infants = req.body.infants;
     airline_class = req.body.airline_class;
     adults = req.body.adults;
-    arrival_date = req.body.arrival_date;
     departure_date = req.body.departure_date;
     children = req.body.children;
     nonstop = req.body.nonstop;
@@ -285,9 +284,6 @@ app.get("/flight_details", async function (req, res) {
     console.log(access_token);
     var url = "https://test.api.amadeus.com/v2/shopping/flight-offers?";
     url = url + "originLocationCode=" + from + "&destinationLocationCode=" + to + "&departureDate=" + departure_date;
-    if (isValidDate(arrival_date)) {
-        url = url + "&returnDate=" + arrival_date;
-    }
     url = url + "&adults=" + adults;
     if (children != 0) {
         url = url + "&children=" + children;
@@ -303,9 +299,6 @@ app.get("/flight_details", async function (req, res) {
     }
     if (currency != "Currency") {
         url = url + "&currencyCode=" + currency;
-    }
-    if (isValidDate(arrival_date)) {
-        url = url + "&max=4";
     }
     else {
         url = url + "&max=4";
@@ -341,75 +334,27 @@ app.get("/flight_details", async function (req, res) {
                         total = flight_details.data[i].price.grandTotal;
                         data_currency = flight_details.data[i].price.currency;
                         additional_services = flight_details.data[i].price.additionalServices;
-                        if (isValidDate(arrival_date)) {
-                            return_stops = flight_details.data[i].itineraries[1].segments[0].numberOfStops;
-                            return_duration = flight_details.data[i].itineraries[1].duration;
-                            return_departure_code = flight_details.data[i].itineraries[1].segments[0].departure.iataCode;
-                            return_departure_time = flight_details.data[i].itineraries[1].segments[0].departure.at;
-                            return_departure_terminal = flight_details.data[i].itineraries[1].segments[0].departure.terminal;
-                            return_arrival_code = flight_details.data[i].itineraries[1].segments[0].arrival.iataCode;
-                            return_arrival_time = flight_details.data[i].itineraries[1].segments[0].arrival.at;
-                            return_arrival_terminal = flight_details.data[i].itineraries[1].segments[0].arrival.terminal;
-                            return_carrier_code = flight_details.data[i].itineraries[1].segments[0].carrierCode;
-                            var flight = {
-                                id: id,
-                                bookableSeats: bookableSeats,
-                                stops: stops,
-                                duration: duration,
-                                departure_code: departure_code,
-                                departure_terminal: departure_terminal,
-                                departure_time: departure_time.substring(11),
-                                arrival_code: arrival_code,
-                                arrival_terminal: arrival_terminal,
-                                arrival_time: arrival_time.substring(11),
-                                carrier_code: carrier_code,
-                                total: total,
-                                data_currency: data_currency,
-                                additional_services: additional_services,
-                                return_stops:return_stops,
-                                return_duration:return_duration,
-                                return_departure_code:return_departure_code,
-                                return_departure_time:return_departure_time,
-                                return_departure_terminal:return_departure_terminal,
-                                return_carrier_code:return_carrier_code,
-                                return_arrival_code:return_arrival_code,
-                                return_arrival_time:return_arrival_time,
-                                return_arrival_terminal:return_arrival_terminal,
-                                departure_date:departure_date,
-                                airline_class:airline_class
-                            };
-                        }
-                        else
-                        {
-                            var flight = {
-                                id: id,
-                                departure_date:departure_date,
-                                bookableSeats: bookableSeats,
-                                stops: stops,
-                                duration: duration,
-                                departure_code: departure_code,
-                                departure_terminal: departure_terminal,
-                                departure_time: departure_time.substring(11),
-                                arrival_code: arrival_code,
-                                arrival_terminal: arrival_terminal,
-                                arrival_time: arrival_time.substring(11),
-                                carrier_code: carrier_code,
-                                total: total,
-                                data_currency: data_currency,
-                                additional_services: additional_services,
-                                airline_class:airline_class
-                            };
-                        }
+                        var flight = {
+                            id: id,
+                            departure_date:departure_date,
+                            bookableSeats: bookableSeats,
+                            stops: stops,
+                            duration: duration,
+                            departure_code: departure_code,
+                            departure_terminal: departure_terminal,
+                            departure_time: departure_time.substring(11),
+                            arrival_code: arrival_code,
+                            arrival_terminal: arrival_terminal,
+                            arrival_time: arrival_time.substring(11),
+                            carrier_code: carrier_code,
+                            total: total,
+                            data_currency: data_currency,
+                            additional_services: additional_services,
+                            airline_class:airline_class
+                        };
                         flights[i] = flight;
                     }
-                    if(isValidDate(arrival_date))
-                    {
-                        res.render("flight_details_ret", { flights: flights });
-                    }
-                    else
-                    {
-                        res.render("flight_details", { flights: flights });
-                    }
+                    res.render("flight_details", { flights: flights });
                 }
                 else {
                     res.redirect("/flight_book")
@@ -451,8 +396,9 @@ app.get("/payment",function(req,res){
 });
 
 app.post("/payment",function(req,res){
+    console.log(logged_in_username)
     flight = new Flight({
-        username:logged_in_user,
+        username:logged_in_username,
         flight_details:flights[flight_no],
         ticket_details:ticket_detail
     })
